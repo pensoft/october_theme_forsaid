@@ -1,0 +1,355 @@
+
+.flyer,
+.videos,
+.newsletters,
+.logo{
+    .col-md-1.col-xs-12{
+        max-width: fit-content;
+    }
+    p:not(.card_title){
+        color: @primary-color;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 800 !important;
+        margin-top: 20px;
+        line-height: 125%; /* 22.5px */
+        margin-left: 25px;
+        margin-bottom: 0;
+    }
+
+    .all_container{
+        min-width: fit-content;
+        border-radius: 17px;
+        background: #FBFFFB;
+        box-shadow: 3.689px 2.46px 20.292px 0px rgba(5, 31, 32, 0.05);
+        padding-bottom: 20px;
+        margin-bottom: 27px;
+    }
+}
+.press-releases{
+    .go-back{
+        display: flex;
+        justify-content: start;
+        width: fit-content;
+        margin-bottom: 20px;
+        .back-to-news{
+            width: fit-content;
+            font-size: 17px;
+            color: #004D746E;
+            &:hover{
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+.media-center {
+
+    .card_image_container {
+        border-radius: 17px;
+        max-width: 100%;
+        transition: all ease-in-out 0.3s;
+
+        .card_icon {
+            display: flex;
+            width: 320px;
+            height: 166px;
+            border-radius: 17px 17px 0 0;
+            background-size: 40% !important;
+            transition: all ease-in-out 0.3s;
+        }
+    }
+
+    .media_label {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 125%; /* 22.5px */
+        color: @primary-color;
+    }
+
+    .media_item {
+
+        .card-container{
+            a{
+                width: fit-content;
+                border-radius: 17px;
+                background: #FBFFFB;
+                box-shadow: 3.689px 2.46px 20.292px 0px rgba(5, 31, 32, 0.05);
+                padding-bottom: 20px;
+                &:hover .read-more-arrow{
+                    background: url("../../assets/images/arrow-right-hover.svg") center no-repeat;
+                    background-size: contain;
+                }
+            }
+
+            .breakpoint-large-down({
+                justify-content: center;
+                display: flex;
+            });
+        }
+
+        .card_bg {
+            cursor: pointer;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all ease-in-out 0.3s;
+            width: 320px;
+            height: 166px;
+            border-radius: 17px 17px 0 0;
+            background-size: 100% !important;
+            .breakpoint-large-down({
+                width: 100%;
+                height: 100%;
+            });
+        }
+
+        &.logos_item .card_bg {
+            background: url("../../assets/images/flyer_bg.png") center no-repeat;
+        }
+
+        &.flyers_item .card_bg {
+            background: url("../../assets/images/logo_bg.png") center no-repeat;
+        }
+
+        &.newsletter_item .card_bg {
+            background: url("../../assets/images/flyer_bg.png") center no-repeat;
+        }
+
+        &.press_item .card_bg {
+            background: #EAD03D url("../../assets/images/press.png") center no-repeat;
+        }
+
+        &.video_item .card_bg {
+            background: url("../../assets/images/youtube_interface.png") center no-repeat;
+        }
+
+        .card_bg:hover {
+            background-size: 110% !important; /* Scale image on hover */
+        }
+
+        .label_and_link{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 21px 21px 0 21px;
+
+            .read-more-arrow{
+                width: 40px;
+                height: 40px;
+                background: url("../../assets/images/arrow-right.svg") top left no-repeat;
+                background-size: contain;
+            }
+
+        }
+    }
+}
+
+.flyer-container,
+.logo-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 165px;
+    border-radius: 17px 17px 0 0;
+    max-width: 100%;
+    margin: 0 auto 20px auto;
+    &.pack{
+        background-color: @primary-color;
+        img{
+            width: 70%;
+            object-fit: contain;
+            border-radius: 17px 17px 0 0;
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 17px 17px 0 0;
+    }
+
+    .links{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .breakpoint-large-down({
+            justify-content: space-evenly;
+            margin-bottom: 50px;
+        });
+        form{
+            width: fit-content;
+        }
+        button, .btn{
+            padding: 10px 30px 10px 45px;
+            font-size: 18px;
+            background: url("../../assets/images/download.svg") no-repeat;
+            background-size: 35px;
+            background-position: 2px 6px;
+            margin: 0 3px;
+            border: none;
+            color: @primary-color;
+            &:hover{
+
+            }
+        }
+
+    }
+
+
+}
+
+.flyer-container{
+    border-radius: 17px;
+    img {
+        width: 100%;
+        height: 166px;
+        object-fit: contain;
+        border-radius: 17px 17px 0 0;
+    }
+}
+
+
+.press-relies-item{
+    max-width: 100%;
+    margin: 0 auto 20px auto;
+    box-shadow: 3.689px 2.46px 20.292px 0px rgba(5, 31, 32, 0.05);
+    border-radius: 17px;
+    padding: 20px 30px 30px 30px;
+    position: relative;
+
+    .breakpoint-large-down({
+        width: auto;
+    });
+
+    .card_title{
+        color: @primary-color!important;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 125%; /* 22.5px */
+    }
+
+    .date{
+        color: @green-color;
+        width: 179px;
+        height: 63px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 0px;
+        top: 0px;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    .btn.btn-primary{
+        margin-right: 10px;
+        .breakpoint-large-down({
+            margin-right: 0;
+            margin-bottom: 20px;
+        });
+    }
+}
+
+
+
+.flyer_image_container{
+    width: auto;
+    height: auto;
+    text-align: left;
+    img{
+        border: 1px solid #c1c1c1;
+    }
+}
+
+
+
+.video-title{
+    color: @dark-color;
+
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 20px!important;
+    margin-bottom: 20px!important;
+}
+
+.videos{
+
+    iframe, video{
+        width: 100%;
+        max-width: 100%;
+        height: 333px;
+        background-color: black;
+        margin: 0 auto 20px auto;
+        box-shadow: 3.689px 2.46px 20.292px 0px rgba(5, 31, 32, 0.05);
+        border-radius: 17px;
+        display: flex;
+        align-self: center;
+    }
+
+    .card_title{
+        color: @primary-color!important;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 800 !important;
+        margin-top: 20px;
+        line-height: 125%; /* 22.5px */
+        margin-bottom: 0;
+    }
+
+}
+
+.media-logo-container{
+    .row{
+        width: 100% !important;
+    }
+}
+
+.media-center-container{
+    .breakpoint-large-down({
+        display: flex;
+        justify-content: center;
+    });
+}
+
+.newsletters{
+
+    .links{
+        flex-direction: row;
+        justify-content: space-between;
+        display: flex;
+
+        .breakpoint-large-down({
+            flex-direction: column;
+        });
+        .btn{
+            .breakpoint-large-down({
+                margin-bottom: 20px;
+            });
+        }
+
+        .download {
+            button, .btn{
+                padding: 10px 30px 10px 45px;
+                font-size: 18px;
+                background: url("../../assets/images/download.svg") no-repeat;
+                background-size: 35px;
+                background-position: 2px 6px;
+                margin: 0 auto;
+                border: none;
+                color: @primary-color;
+                width: fit-content;
+                display: block;
+                &:hover{
+
+                }
+            }
+        }
+    }
+}

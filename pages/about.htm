@@ -1,0 +1,85 @@
+url = "/about"
+layout = "default"
+title = "About"
+is_hidden = 0
+meta_description = "about page"
+seo_keywords = "keywords"
+robot_index = "index"
+robot_follow = "follow"
+
+[siteSearchInclude]
+
+[jumbotron background]
+jumbotron = "background"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron process]
+jumbotron = "process"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron challanges]
+jumbotron = "challanges"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron digital]
+jumbotron = "digital-effort"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron sets]
+jumbotron = "forsaid-sets-out"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+{% component 'siteSearchInclude' %}
+
+
+<div class="container background">
+    <div class="row back_row">
+        <div class="col-xs-12">
+            <div class="go-back">
+                <a href="{{'home'|page}}" class="read-more-arrow"></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7 col-xs-12">{% component "background" %}</div>
+        <div class="col-md-5 col-xs-12 start-md center-xs at-risk-regions-image">
+            <img src="{{'At-Risk-Regions.svg'|media}}">
+            <div class="at-risk-regions-warning">At Risk Regions</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-xs-12 end-md center-xs"><div class="the-process-bg"></div></div>
+        <div class="col-md-7 col-xs-12">{% component "process" %}</div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 col-xs-12">{% component "challanges" %}</div>
+    </div>
+</div>
+
+<div class="container-fluid digital-effort">
+    {% component 'digital' %}
+</div>
+
+<div class="sets">
+    {% component 'sets' %}
+</div>

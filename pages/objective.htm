@@ -1,0 +1,32 @@
+url = "/objective"
+layout = "default"
+title = "Objective"
+
+[siteSearchInclude]
+
+[jumbotron obj]
+jumbotron = "objective"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron will]
+jumbotron = "forsaid-will"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+{% component 'siteSearchInclude' %}
+
+<div class="container objectives_first_container">
+    <div class="row">
+        <div class="col-md-7 col-xs-12 obj-text">{% component 'obj' %}</div>
+        <div class="col-md-5 col-xs-12 end-md center-xs obj-bg_container"><div class="obj-bg"></div> </div>
+    </div>
+</div>
+
+<div class="container forsaid_will">
+    {% component 'will' %}
+</div>

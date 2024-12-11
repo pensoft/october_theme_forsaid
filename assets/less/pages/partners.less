@@ -1,0 +1,279 @@
+ul.partners_logos_list{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0;
+    display: block;
+}
+ul.partners_logos_list li{
+    display: inline-flex;
+    text-align: center;
+    vertical-align: middle;
+    margin: 17px 17px 0 0;
+    background: @secondary-color;
+    border-radius: 50%;
+    padding: 20px;
+    .breakpoint-large-down({
+        margin: 17px 4px 0 4px;
+    });
+
+}
+
+
+.partner_cover{
+    max-height: 90px;
+    width: 90px;
+    object-fit: contain;
+}
+
+.parener_logo{
+    width: 90px;
+    height: 90px;
+    margin: 0 30px 30px 0;
+    display: inline-flex;
+    color: transparent;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    float: left;
+    //&:hover{
+    //    -moz-box-shadow:  0px 0px 20px rgba(24, 43, 40, 0.3);
+    //    -webkit-box-shadow:  0px 0px 20px rgba(24, 43, 40, 0.3);
+    //    box-shadow: 0px 0px 20px rgba(24, 43, 40, 0.3);
+    //}
+
+    .breakpoint-large-down({
+        margin: 15px 10px;
+    });
+}
+
+
+.assoc_partners{
+    padding: 30px 0;
+    margin-top: 30px;
+    &.half-a-border-on-top {
+        border-top:2px solid #C3C4D7;
+        position: relative;
+
+        &:after {
+            padding:0;margin:0;display:block;/* probably not really needed? */
+            content: "";
+            width:50%;
+            height:4px;/* slight higher to work around rounding errors(?) on some zoom levels in some browsers. */
+            background-color:white;
+            position: absolute;
+            right:0;
+            top:-4px;
+        }
+    }
+
+    .partner_title a{
+        color: @default-color;
+        &:hover{
+            opacity: 0.7;
+        }
+    }
+
+}
+
+//
+//.partner_cover.width{
+//  height: 160px;
+//  width: 160px;
+//  line-height: 140px!important;
+//}
+//
+//.partner_cover.height{
+//  text-align: center;
+//  height: 119px;
+//  width: 119px;
+//  line-height: 185px!important;
+//}
+.fill_default:hover,
+.fill_default.fill_ES:hover,
+.fill_default.fill_AU:hover,
+.fill_default.fill_FR:hover,
+.fill_default.fill_DE:hover,
+.fill_default.fill_BG:hover,
+.fill_default.fill_HU:hover,
+.fill_default.fill_PT:hover,
+.fill_default.fill_GB:hover,
+.fill_default.fill_RO:hover,
+.fill_default.fill_SE:hover,
+.fill_default.fill_BE:hover,
+.fill_default.fill_NL:hover,
+.fill_default.fill_IT:hover,
+.fill_default.fill_EE:hover,
+.fill_default.fill_CH:hover
+{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.partners_list{
+    margin-top: 50px;
+    .breakpoint-small-down({
+        margin-top: 0px;
+        min-height: unset;
+    });
+}
+
+.partners-map-container{
+    margin: 50px auto;
+    display: inline-block;
+    padding: 0;
+    width: 100%;
+    .breakpoint-large-down({
+        margin: 60px auto;
+        display: inline-block !important;
+        padding: 0 !important;
+    });
+}
+
+.partner-item{
+    margin-bottom: 100px;
+    &.aff{
+        margin-bottom: 20px;
+    }
+    .partner_title{
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 145%; /* 34.8px */
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+    }
+    .partner_link{
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 115%; /* 18.4px */
+        min-height: 39px;
+        padding-right: 50px;
+        &:hover{
+            opacity: 0.7;
+        }
+
+        .breakpoint-large-down({
+            margin: 20px auto;
+        });
+    }
+    .row:has(.partner_title ){
+        align-items: center;
+    }
+
+
+    .contact_info{
+        border-radius: 17px;
+        background: #FBFFFB;
+        box-shadow: 6px 4px 33px 0px rgba(5, 31, 32, 0.05);
+        padding: 41px 27px 41px 27px!important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .breakpoint-large-down({
+            max-width: 80%;
+        });
+        img{
+            width: 305px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 17px;
+            max-width: 100%;
+
+        }
+
+        h3{
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 145%; /* 29px */
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .col-xs-12{
+            padding-left: unset;
+        }
+
+        .body {
+            height: 185px;
+            position: relative;
+            overflow: hidden;
+            transition: all ease-in-out 0.5s;
+
+            &:after {
+                position: absolute;
+                bottom: 0;
+                height: 150%;
+                width: 100%;
+                content: "";
+                background: linear-gradient(to top, rgba(251, 255, 251, 1) 0%, rgba(251, 255, 251, 0) 100%);
+                pointer-events: none;
+            }
+
+            ol {
+                list-style-type: decimal;
+                padding-left: 20px;
+            }
+
+            &.changed {
+
+                    &:after {
+                        position: absolute;
+                        bottom: 0;
+                        height: 100%;
+                        width: 100%;
+                        content: "";
+                        background: none;
+                        pointer-events: none;
+                    }
+
+                a.read_full {
+                    //&:after {
+                    //    background: url("../../assets/images/arrow-down-green.svg") right no-repeat;
+                    //    background-size: contain;
+                    //    transform: rotate(180deg);
+                    //}
+                }
+            }
+
+            a.read_full {
+                position: absolute;
+                top: 161px;
+                color: @link-color;
+                z-index: 2;
+
+                //&:after {
+                //    background: url("../../assets/images/arrow-down-green.svg") right no-repeat;
+                //    background-size: contain;
+                //    content: ' ';
+                //    width: 15px;
+                //    height: 10px;
+                //    display: inline-flex;
+                //    margin-left: 10px;
+                //}
+            }
+        }
+
+
+    }
+
+}
+
+.partners svg{
+    max-width: 100% !important;
+    height: auto;
+}
+
+#mycomponentpartners{
+    .col-xs-12{
+        .breakpoint-large-down({
+            padding-left: 0;
+            padding-right: 0;
+        });
+    }
+}
+
+

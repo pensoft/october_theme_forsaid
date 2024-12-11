@@ -1,0 +1,125 @@
+.contact{
+    .width100{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+    .contact_info {
+
+
+        .coordinator_info{
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            height: 100%;
+
+            h3{
+                color: @primary-color;
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 105%; /* 31.5px */
+                letter-spacing: 0.6px;
+                margin-bottom: 0;
+            }
+            .card_title{
+                color: @green-color;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 145%; /* 34.8px */
+                letter-spacing: 0.48px;
+                margin-bottom: 50px;
+            }
+
+            a{
+
+
+                display: block;
+                margin-bottom: 10px;
+
+                &.linkedin{
+                    background: url("../../assets/images/linkedin_icon.svg") left center no-repeat;
+                    background-size: 24px;
+                    padding-left: 36px;
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 112%; /* 24.64px */
+                    letter-spacing: 0.44px;
+                    color: @primary-color;
+                }
+                &.email{
+                    background: url("../../assets/images/mail_icon.svg") left center no-repeat;
+                    background-size: 24px;
+                    padding-left: 36px;
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 112%; /* 24.64px */
+                    letter-spacing: 0.44px;
+                    color: @primary-color;
+                }
+            }
+
+            .breakpoint-large-down({
+                height: unset;
+
+            });
+        }
+
+
+        .coordinator_image{
+            .coordinator-bg{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                &:after{
+                    content: ' ';
+                    position: absolute;
+                    background: @dark-color;
+                    height: 61%;
+                    width: 50%;
+                    right: 0;
+                    bottom: 0px;
+                    border-radius: 17px;
+                    z-index: 1;
+                }
+            }
+            img{
+                object-fit: cover;
+                width: 320px;
+                height: 430px;
+                border-radius: 17px;
+                z-index: 2;
+                display: inline;
+                position: relative;
+            }
+        }
+
+        .login_intro{
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 145%; /* 31.9px */
+        }
+
+        .no-padding.btn-bold{
+            color: @link-color;
+        }
+        .btn-link{
+            color: @link-color;
+            float: left;
+            margin-top: 20px;
+        }
+
+        .breakpoint-large-down({
+            width: 100%;
+
+        });
+    }
+
+

@@ -1,0 +1,67 @@
+url = "/contact"
+layout = "default"
+title = "Contact"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[siteSearchInclude]
+
+[jumbotron]
+jumbotron = "contact"
+background = "#ffffff"
+templates = "template2"
+description_limit = 0
+==
+<?php
+use Pensoft\Cardprofiles\Models\Profiles;
+
+function onStart(){
+	$this['profiles'] =  Profiles::where('category_id', 1)->get();
+}
+?>
+==
+{% component 'siteSearchInclude' %}
+
+<div class="container contact_container">
+    <h1 class="display-1">Contact</h1>
+	<div class="row contact_info">
+		{% for profile in profiles %}
+
+        <div class="col-md-7 col-xs-12 coordinator_info">
+                <div>
+                <h3>{{profile.names}}</h3>
+                {% if profile.position %}<div class="card_title">{{profile.position}}</div>{% endif %}
+                </div>
+                <div style="margin-bottom: 50px;">
+                {% if profile.email %}
+                        <a href="mailto:{{profile.email}}" class="email" target="_blank">
+                            {{profile.email}}
+                        </a>
+                {% endif %}
+                {% if profile.linkedin_url %}
+                        <a href="{{profile.linkedin_url}}" class="linkedin" target="_blank">
+                            {{profile.linkedin_url}}
+                        </a>
+                {% endif %}
+                </div>
+                <div>
+                    {{profile.content|raw}}
+                </div>
+            </div>
+
+        <div class="col-md-5 col-xs-12 start-md center-xs coordinator_image">
+            <div class="coordinator-bg">
+                {% if profile.avatar %}
+                <img src="{{profile.avatar.thumb(320, 430, {'mode' : 'crop' })}}" class="fr-fic fr-dii">
+                {% else %}
+                <img src="{{'CMS_icons_avatar.svg'|media}}" class="fr-fic fr-dii">
+                {% endif %}
+            </div>
+
+        </div>
+
+		{% endfor %}
+	</div>
+
+</div>

@@ -1,0 +1,122 @@
+url = "/"
+layout = "default"
+title = "FORSAID"
+is_hidden = 0
+meta_description = "The FORSAID project"
+robot_index = "index"
+robot_follow = "follow"
+
+[jumbotron mission]
+jumbotron = "homepage-intro"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron]
+jumbotron = "innovative-tools"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron jumbotron2]
+jumbotron = "detection-monitoring"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron jumbotron3]
+jumbotron = "supporting-plant-health"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+<?php
+use Pensoft\Articles\Models\Article;
+use Carbon\Carbon;
+use Pensoft\Calendar\Models\Entry;
+
+
+function onStart(){
+
+    $this['highlights'] = Article::news()->where('published', 'true')->orderBy('published_at', 'desc')->take(10)->get()->map(function($item){
+        $item->content = str_limit(strip_tags($item->content), 90);
+        $item->href = $item->slug;
+        return $item;
+    });
+
+    $this['entries'] = Entry::where('end', '>', Carbon::now())->where('show_on_timeline', true)->where('is_internal', false)->orderBy('start', 'asc')->take(3)->get();
+
+}
+?>
+==
+<div class="container mission">
+    <div class="map_container">
+        {% partial 'homepage-map' %}
+    </div>
+{% component 'mission' %}
+</div>
+
+
+<div class="container-fluid tools">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-12" data-aos="zoom-in" data-aos-delay="100">
+                <div class="tools_item innovative-tools">{% component 'jumbotron' %}</div>
+            </div>
+            <div class="col-md-4 col-xs-12" data-aos="zoom-in" data-aos-delay="400">
+                <div class="tools_item detection-monitoring">{% component 'jumbotron2' %}</div>
+            </div>
+            <div class="col-md-4 col-xs-12" data-aos="zoom-in" data-aos-delay="700">
+                <div class="tools_item supporting-plant-health">{% component 'jumbotron3' %}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- News -->
+{% if highlights.count %}
+<!-- latest from news -->
+<div class="container-fluid highlights-news">
+    <div class="container">
+        <h1 class="display-1">Latest news</h1>
+    </div>
+
+    <div class="container prev-nex-container">
+        <div class="trigger_prev_arrow"></div>
+        <div class="trigger_next_arrow"></div>
+    </div>
+
+    <div class="trigger_prev"></div>
+    <div class="trigger_next"></div>
+
+    <div class="news-carousel">
+        {% for highlight in highlights %}
+        <div class="home-news-highlights">
+            <div class="row news-item">
+                <div class="col-md-12 col-xs-12 home-news-cover">
+                    <a href="/news/{{highlight.slug}}">
+                        <img src="{{ highlight.cover.path}}" alt="{{ highlight.title }}">
+                    </a>
+                </div>
+                <div class="col-md-12 col-xs-12 news-content">
+                    <a href="/news/{{highlight.slug}}">
+                        <div class="news-title">{{ highlight.title|length > 100 ? highlight.title|slice(0, 100)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.title|replace({"&nbsp;": " ", ".": ". "})  }}</div></a>
+                    <p class="news-date">{{ highlight.published_at|date('d M Y') }}</p>
+                    <a href="/news/{{highlight.slug}}">
+                        <div class="row read-more-row">
+                            <div class="col-xs"><div class="read-more">{{'Read more' |_}}</div></div>
+                            <div class="col-xs end-xs"><div class="read-more-arrow"></div></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endif %}

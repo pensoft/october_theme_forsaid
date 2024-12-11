@@ -1,0 +1,43 @@
+{% for partner in partners %}
+<div class="col-xs-12 partner-item">
+    <div class="row mb-2">
+        <!--                                <div class="col-xs-12 col-md start-md center-xs partner_cover"><img src="{{partner.cover.thumb(197, auto, {mode: 'crop'})}}"></div>-->
+        <div class="col-xs-12 col-md-9 start-md center-xs partner_title">{{partner.instituion}}</div>
+        <div class="col-xs-12 col-md-3 end-md start-xs partner_link"><a href="{{partner.instituion_url}}" class="btn btn-primary" target="_blank">Visit website</a></div>
+        <div class="col-xs-12 partner_description">{{partner.content|raw}}</div>
+    </div>
+    {% if insider_members.getIM(partner.id).count > 0 %}
+    <div id="accordion-insider-members-list-{{partner.id}}" class="partners-insider">
+        <div class="accordion-border">
+
+            <div class="accordion-content">
+                <div class="row top-xs">
+                    {% for profile in insider_members.getIM(partner.id) %}
+                    <div class="col-md-4 col-xs-12">
+                        <div class="contact_info">
+                            <div class="coordinator_image">
+                                {% if profile.avatar %}
+                                <!--                            <img alt="{{ profile.names }}" src="{{profile.avatar.thumb(175,145,{'mode':'crop'})}}">-->
+                                <img alt="{{ profile.names }}" src="{{profile.avatar.thumb(305,190,{'mode':'crop'})}}">
+                                {% else %}
+                                <img alt="{{ profile.names }}" src="{{ 'avatar.svg'|media }}" width="305" height="190" class="no-image">
+                                {% endif %}
+                            </div>
+                            <div class="col-xs-12 coordinator_info">
+                            <h3>{{ profile.names }}</h3>
+                            <div class="body">
+                                {{ profile.content|raw }}
+                                <a href="javascript:void(0);" onclick="toggleExpandReadMore(this)" class="read_full">Read more</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endfor %}
