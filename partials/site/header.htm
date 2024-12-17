@@ -21,7 +21,7 @@ secondaryClasses = "dropdown-menu"
 numberOfLevels = 2
 ==
 {% if user %}
-<nav class="fixed navbar-loggedin-user ">
+<nav class="navbar-loggedin-user ">
     <div class="navbar-collapse collapse row middle-xs">
         <div class="col-xs-12 col-md-9">{% component 'login' %}</div>
         <div class="col-xs-2 end-xs  col-md-3 hidden-xs">
@@ -36,7 +36,7 @@ numberOfLevels = 2
 {% endif %}
 
 <div class="container header-menu-container">
-    <nav class="navbar" id="headernavbar" {% if user %} style="margin-top:69px;"{% endif %}>
+    <nav class="navbar" id="headernavbar" {% if user %} {% endif %}>
         <div id="menuToggle">
             <input type="checkbox" />
             <span></span>

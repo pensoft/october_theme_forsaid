@@ -320,7 +320,7 @@ function toggleExpandReadMore(el){
         $up.addClass('changed');
 
         $el.css({
-            top: totalHeight - 30
+            top: totalHeight - 130
         });
         $up.css({
             // Set height to prevent instant jumpdown when max height is removed
@@ -330,7 +330,7 @@ function toggleExpandReadMore(el){
 
         // Apply the height change after setting the initial height
         setTimeout(function() {
-            $up.css("height", totalHeight);
+            $up.css("height", totalHeight - 100);
         }, 10); // Small timeout to ensure transition
 
 

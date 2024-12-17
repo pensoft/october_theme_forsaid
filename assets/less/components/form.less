@@ -127,25 +127,21 @@
 }
 
 .login_form_container{
-    border-radius: 10px;
-    border: 1px solid #B9D7DB;
-    margin: 0 auto;
-    padding: 40px 50px!important;
-    .breakpoint-large-down({
-        padding: 20px 0!important;
-    });
+    .col-xs-12{
+        padding: 0;
+    }
+}
 
-    button{
-        border: none;
+.space_top{
+    margin-top: 2rem;
+}
+
+.login{
+    .coordinator_info{
+        justify-content: start!important;
     }
-    input{
-        background: #F6F6F6 0% 0% no-repeat padding-box;
-        border-radius: 5px;
-        border: none;
-        width: 80% !important;
-        margin: 0 auto;
-    }
-    a{
-        color: @link-color!important;
+
+    .ui.form .fields .field + .field{
+        margin-top: 2rem;
     }
 }

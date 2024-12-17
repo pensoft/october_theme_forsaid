@@ -118,6 +118,18 @@
     border-radius: 17px;
     background: #ECF8EE;
 
+    &:hover > .plus{
+        background: @green-color;
+        opacity: 1;
+    }
+
+    &:hover{
+        .plus{
+            background: @green-color;
+            opacity: 1;
+        }
+    }
+
 }
 
 .work_packages{
@@ -154,6 +166,18 @@
         });
     }
 
+    &:hover > .plus{
+        background: @green-color;
+        opacity: 1;
+    }
+
+    &:hover{
+        .plus{
+            background: @green-color;
+            opacity: 1;
+        }
+    }
+
 }
 .work_packages .accordion-content{
     padding: 20px 30px;
@@ -186,9 +210,11 @@
         justify-content: center;
         border-radius: 50%;
         position: absolute;
-        top: 0;
+        top: 2px;
         left: 0;
-        font-size: 16px;
+        font-size: 15px;
+        line-height: 22px;
+        text-align: center;
     }
 
 }
