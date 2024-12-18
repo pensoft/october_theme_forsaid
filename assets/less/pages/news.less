@@ -48,7 +48,7 @@ nav:not(.navbar){
         font-style: normal;
         font-weight: 800;
         line-height: 125%; /* 27.5px */
-        padding: 0 21px;
+        //padding: 0 21px;
     }
 
     .news-img-container{
@@ -296,6 +296,11 @@ nav:not(.navbar){
     position: relative;
     padding: 50px 0 80px 0;
 
+    .highlights-news-slider-container{
+        display: block;
+        margin: 0 auto;
+    }
+
     .container:first-of-type{
         padding-bottom: 0;
     }
@@ -344,7 +349,7 @@ nav:not(.navbar){
         }
 
         .news-content{
-            padding: 28px;
+            padding: 28px!important;
             a:hover{
                 .read-more-arrow{
                     background: url("../../assets/images/arrow-right-hover.svg") center no-repeat;
@@ -417,6 +422,11 @@ nav:not(.navbar){
 
     .slick-list{
         padding: 30px 0;
+
+
+        /**/
+        //width: 100%;
+        /**/
     }
 
     /* Custom slick dots for news highlights on homepage */
@@ -522,24 +532,25 @@ nav:not(.navbar){
 
     .news-carousel{
         position: relative;
-        &:before {
-            content: "";
-            width: calc(~'80vw - 70%');
-            height: 100%;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.7) 25%, rgba(255, 255, 255, 0));
-            position: absolute;
-            z-index: 9;
-            left: 0;
-            top: 0;
-            .breakpoint-large-down({
-                display: none;
-            });
-        }
+        //&:before {
+        //    content: "";
+        //    width: calc(~'80vw - 70%');
+        //    height: 100%;
+        //    background: linear-gradient(to right, rgba(255, 255, 255, 0.7) 25%, rgba(255, 255, 255, 0));
+        //    position: absolute;
+        //    z-index: 9;
+        //    left: 0;
+        //    top: 0;
+        //    .breakpoint-large-down({
+        //        display: none;
+        //    });
+        //}
         &:after {
             content: "";
-            width: calc(~'80vw - 70%');
+            //width: calc(~'80vw - 70%');
+            width: 200px;
             height: 100%;
-            background: linear-gradient(to left, rgba(255, 255, 255, 0.7) 25%, rgba(255, 255, 255, 0));
+            background: linear-gradient(to left, rgba(251, 255, 251, 1) 2%, rgba(251, 255, 251, 0));
             position: absolute;
             z-index: 9;
             right: 0;

@@ -205,6 +205,10 @@ $(document).ready(function() {
             // centerPadding: '40px',
             arrows: false,
             dots: true,
+
+
+            // centerPadding: '0px',
+
             responsive: [
                 {
                     breakpoint: 768,
@@ -309,7 +313,7 @@ function toggleExpandReadMore(el){
     $el = $(el); // read_full link
 
     $up = $el.parent(); // body
-    if ($el.text() == "Read more") {
+    if ($el.text() == "Read More") {
         $ps = $up.find("p, ul, ol");
 
         // Measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
@@ -335,7 +339,7 @@ function toggleExpandReadMore(el){
 
 
         // Stuff to do when btn is in the read more state
-        $el.html("Read less");
+        $el.html("Read Less");
     } else {
         $up.removeClass('changed');
         $el.css({
@@ -353,7 +357,7 @@ function toggleExpandReadMore(el){
         }, 10); // Small timeout to ensure transition
 
         // Stuff to do when btn is in the read less state
-        $el.html("Read more");
+        $el.html("Read More");
 
         $('html, body').animate({
             scrollTop: $up.offset().top - $('header').height()
@@ -509,7 +513,7 @@ function init() {
             if (typeof cardCarousel === 'function') {
                 cardCarousel({
                     slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToScroll: 1,
                     autoplay: true,
                     autoplaySpeed: 6000,
                     prevArrow: '<i class="slick-prev"/>',
@@ -524,8 +528,8 @@ function init() {
         if (!isBreakpointLarge()) {
             if (typeof cardCarousel === 'function') {
                 cardCarousel({
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
                     autoplay: true,
                     autoplaySpeed: 6000,
                     prevArrow: '<i class="slick-prev"/>',

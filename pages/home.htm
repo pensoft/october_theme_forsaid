@@ -33,6 +33,8 @@ title = 1
 background = "transperant"
 templates = "template3"
 description_limit = 0
+
+
 ==
 <?php
 use Pensoft\Articles\Models\Article;
@@ -93,30 +95,33 @@ function onStart(){
     <div class="trigger_prev"></div>
     <div class="trigger_next"></div>
 
-    <div class="news-carousel">
-        {% for highlight in highlights %}
-        <div class="home-news-highlights">
-            <div class="row news-item">
-                <div class="col-md-12 col-xs-12 home-news-cover">
-                    <a href="/news/{{highlight.slug}}">
-                        <img src="{{ highlight.cover.path}}" alt="{{ highlight.title }}">
-                    </a>
-                </div>
-                <div class="col-md-12 col-xs-12 news-content">
-                    <a href="/news/{{highlight.slug}}">
-                        <div class="news-title">{{ highlight.title|length > 100 ? highlight.title|slice(0, 100)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.title|replace({"&nbsp;": " ", ".": ". "})  }}</div></a>
-                    <p class="news-date">{{ highlight.published_at|date('d M Y') }}</p>
-                    <a href="/news/{{highlight.slug}}">
-                        <div class="row read-more-row">
-                            <div class="col-xs"><div class="read-more">{{'Read more' |_}}</div></div>
-                            <div class="col-xs end-xs"><div class="read-more-arrow"></div></div>
-                        </div>
-                    </a>
+    <div class="container highlights-news-slider-container">
+        <div class="news-carousel">
+            {% for highlight in highlights %}
+            <div class="home-news-highlights">
+                <div class="row news-item">
+                    <div class="col-md-12 col-xs-12 home-news-cover">
+                        <a href="/news/{{highlight.slug}}">
+                            <img src="{{ highlight.cover.path}}" alt="{{ highlight.title }}">
+                        </a>
+                    </div>
+                    <div class="col-md-12 col-xs-12 news-content">
+                        <a href="/news/{{highlight.slug}}">
+                            <div class="news-title">{{ highlight.title|length > 100 ? highlight.title|slice(0, 100)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.title|replace({"&nbsp;": " ", ".": ". "})  }}</div></a>
+                        <p class="news-date">{{ highlight.published_at|date('d M Y') }}</p>
+                        <a href="/news/{{highlight.slug}}">
+                            <div class="row read-more-row">
+                                <div class="col-xs"><div class="read-more">{{'Read more' |_}}</div></div>
+                                <div class="col-xs end-xs"><div class="read-more-arrow"></div></div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
+
 </div>
 
 {% endif %}

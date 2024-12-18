@@ -202,7 +202,7 @@ ul.partners_logos_list li{
             padding-left: unset;
         }
 
-        .body {
+        .body_c {
             height: 185px;
             position: relative;
             overflow: hidden;
@@ -211,10 +211,10 @@ ul.partners_logos_list li{
             &:after {
                 position: absolute;
                 bottom: 0;
-                height: 150%;
+                height: 100%;
                 width: 100%;
-                content: "";
-                background: linear-gradient(to top, rgba(251, 255, 251, 1) 0%, rgba(251, 255, 251, 0) 100%);
+                content: " ";
+                background: linear-gradient(to top, rgba(251, 255, 251, 1) 0%, rgba(251, 255, 251, 1) 20%, rgba(251, 255, 251, 0) 100%);
                 pointer-events: none;
             }
 
@@ -246,7 +246,7 @@ ul.partners_logos_list li{
 
             a.read_full {
                 position: absolute;
-                top: 161px;
+                top: 165px;
                 color: @link-color;
                 z-index: 2;
 
