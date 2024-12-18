@@ -174,13 +174,6 @@
 .library .container {
     padding: 0;
 
-    //.button_su{
-    //    &:has(form){
-    //        margin-top: 60px;
-    //        margin-right: 20px;
-    //        margin-bottom: 0;
-    //    }
-    //}
 
     .row.center-xs.mb-1 {
         position: relative;
@@ -245,11 +238,20 @@
         }
     }
 
+
     .breakpoint-large-down({
         display: flex;
         justify-content: center;
         align-items: center;
     });
+
+    &:has(.navbar){
+        .breakpoint-large-down({
+            display: flex;
+            justify-content: unset;
+            align-items: center;
+        });
+    }
 }
 
 .libraryForm {
@@ -468,6 +470,7 @@
 
     .breakpoint-small-down({
         width: auto;
+        flex-direction: column;
         // margin-left: 30%;
     });
 
@@ -496,6 +499,7 @@
         font-weight: 300;
         line-height: 145%; /* 34.8px */
         color: rgba(5, 31, 32, 0.65);
+        text-transform: capitalize;
         .breakpoint-small-down({
             display: block;
             margin-left: 0px;

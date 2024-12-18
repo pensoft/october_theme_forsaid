@@ -169,7 +169,7 @@ $(document).ready(function() {
 	$('circle').attr('data-aos', 'fade-up-right');
 	$('circle').attr('data-aos-delay', '300');
 
-
+    $('.download_all').text('Download All');
 
 	$('.see_all_partners_link').hide();
 
