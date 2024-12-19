@@ -710,12 +710,48 @@ ul.pagination{
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    float: left;
                     &:hover{
                         opacity: 1;
                     }
 
                     &.p-twitter{
                         font-size: 0.9em!important;
+                    }
+
+                    &.p-bluesky{
+                        margin-left: -10px;
+                        font-size: 0.7em!important;
+
+                        &::before{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 18px;
+                            height: 18px;
+                            background: @primary-color;
+                            border-radius: 2px;
+                            color: @default-color;
+                            font-size: 0.8em!important;
+                        }
+
+                    }
+
+                    &.p-threads{
+                        margin-left: -10px;
+                        font-size: 0.8em!important;
+
+                        &::before{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 18px;
+                            height: 18px;
+                            background: @primary-color;
+                            border-radius: 2px;
+                            color: @default-color;
+                            font-size: 0.8em!important;
+                        }
                     }
                 }
             }
