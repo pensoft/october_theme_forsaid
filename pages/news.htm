@@ -163,10 +163,12 @@ $this['related'] = $related;
                 <div class="col-xs-12 news-img-container">
                     <img src="{{ article.cover.thumb(413, auto, { mode: 'crop' }) }}" />
                 </div>
+                {% if related.count > 0 %}
                 <div class="col-xs-12 related_articles_container mt-4">
                     <h1>Other news from FORSAID</h1>
                     {% component 'related_articles' %}
                 </div>
+                {% endif %}
 
             </div>
         </div>
@@ -176,6 +178,18 @@ $this['related'] = $related;
 
 
     <h1 class="display-1">News</h1>
+
+    <div class="category-tabs-container mb-2">
+        {% if categories.count > 0 %}
+        <div class="row category-tabs" id="category-tabs">
+            <a href="{{ 'news'|page }}" class="{{ 'all' == categoryId ? 'active' : '' }}">All News</a>
+            {% for category in categories %}
+            <a href="{{ 'news'|page }}?categoryId={{ category.id }}" class="{{ category.id == categoryId ? 'active' : '' }}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
     <div class="news-list">
 
         <div class="row">
