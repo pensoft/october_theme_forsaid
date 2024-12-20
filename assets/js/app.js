@@ -187,31 +187,31 @@ $(document).ready(function() {
         $('.partners_list .key_0, .partners_list .key_2, .partners_list .key_4, .partners_list .key_6, .partners_list .key_8, .partners_list .key_10, .partners_list .key_12, .partners_list .key_14, .partners_list .key_16, .partners_list .key_18').wrapAll('<div class="col-md-6 col-xs-12"></div>');
         $('.partners_list .key_1, .partners_list .key_3, .partners_list .key_5, .partners_list .key_7, .partners_list .key_9, .partners_list .key_11, .partners_list .key_13, .partners_list .key_15, .partners_list .key_17, .partners_list .key_19').wrapAll('<div class="col-md-6 col-xs-12"></div>');
     }
-
-    $('.all_container').each(function (){
-        if ($(this).text().toLowerCase() == 'logo pack'){
-            // $('.logo .links').each(function (){
-                $(this).parent().find('.links .form_container').wrapAll('<div class="expand_buttons"></div>');
-            // });
-            // $('.lang_versions_btn .hidden_btn').wrapAll('<div class="expand_buttons"></div>');
-            $('<a href="javascript:void(0);" class="more_languages">Download <i></i></a>').insertAfter('.expand_buttons');
-
-
-            $('.more_languages').click(function () {
-                var link = $(this);
-                link.parent().find('.expand_buttons').slideToggle('slow', function() {
-                    if ($(this).is(':visible')) {
-                        link.addClass('expaned');
-                        link.html('Download <i></i>');
-                    } else {
-                        link.removeClass('expaned');
-                        link.html('Download <i></i>');
-                    }
-                });
-
-            });
-        }
-    });
+    //
+    // $('.all_container').each(function (){
+    //     if ($(this).text().toLowerCase() == 'logo pack'){
+    //         // $('.logo .links').each(function (){
+    //             $(this).parent().find('.links .form_container').wrapAll('<div class="expand_buttons"></div>');
+    //         // });
+    //         // $('.lang_versions_btn .hidden_btn').wrapAll('<div class="expand_buttons"></div>');
+    //         $('<a href="javascript:void(0);" class="more_languages">Download <i></i></a>').insertAfter('.expand_buttons');
+    //
+    //
+    //         $('.more_languages').click(function () {
+    //             var link = $(this);
+    //             link.parent().find('.expand_buttons').slideToggle('slow', function() {
+    //                 if ($(this).is(':visible')) {
+    //                     link.addClass('expaned');
+    //                     link.html('Download <i></i>');
+    //                 } else {
+    //                     link.removeClass('expaned');
+    //                     link.html('Download <i></i>');
+    //                 }
+    //             });
+    //
+    //         });
+    //     }
+    // });
 
 
 
