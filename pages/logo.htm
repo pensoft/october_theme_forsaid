@@ -101,7 +101,7 @@ return Response::download($pathToFile, $fileName, $headers);
                             <div class="form_container">
                                 {{form_open({ request: 'onDownloadFile' }) }}
                                 <input type="hidden" value="{{record.file_jpg.id}}" name="id">
-                                <button type="submit" data-attach-loading class="btn btn-secondary">{% if record.name|lower == 'logo pack' %}Download JPG{% else %} Download {% endif %}</button>
+                                <button type="submit" data-attach-loading class="btn btn-secondary">{% if record.name|lower == 'logo pack' %}JPG{% else %} Download {% endif %}</button>
                                 {{ form_close() }}
                             </div>
                         {% endif %}
@@ -110,7 +110,7 @@ return Response::download($pathToFile, $fileName, $headers);
                             <div class="form_container">
                                 {{form_open({ request: 'onDownloadFile' }) }}
                                 <input type="hidden" value="{{record.file_png.id}}" name="id">
-                                <button type="submit" data-attach-loading class="btn btn-secondary">{% if record.name|lower == 'logo pack' %}Download PNG{% else %} Download {% endif %}</button>
+                                <button type="submit" data-attach-loading class="btn btn-secondary">{% if record.name|lower == 'logo pack' %}PNG{% else %} Download {% endif %}</button>
                                 {{ form_close() }}
                             </div>
                         {% endif %}
@@ -119,7 +119,7 @@ return Response::download($pathToFile, $fileName, $headers);
                             <div class="form_container">
                                 {{form_open({ request: 'onDownloadFile' }) }}
                                 <input type="hidden" value="{{record.file_eps.id}}" name="id">
-                                <button type="submit" data-attach-loading class="btn btn-secondary">{% if record.name|lower == 'logo pack' %}Download SVG{% else %} Download {% endif %}</button>
+                                <button type="submit" data-attach-loading class="btn btn-secondary">{% if record.name|lower == 'logo pack' %}SVG{% else %} Download {% endif %}</button>
                                 {{ form_close() }}
                             </div>
                         {% endif %}
@@ -128,14 +128,14 @@ return Response::download($pathToFile, $fileName, $headers);
                             <div class="form_container">
                                 {{form_open({ request: 'onDownloadFile' }) }}
                                 <input type="hidden" value="{{record.file_zip.id}}" name="id">
-                                <button type="submit" data-attach-loading class="btn btn-secondary">{% if record.name|lower == 'logo pack' %}Download ZIP{% else %} Download {% endif %}</button>
+                                <button type="submit" data-attach-loading class="btn btn-secondary">{% if record.name|lower == 'logo pack' %}ZIP{% else %} Download {% endif %}</button>
                                 {{ form_close() }}
                             </div>
                         {% endif %}
 
                         {% if record.file_pdf %}
                         <div class="form_container">
-                            <a href="{{record.file_pdf.path}}" target="_blank" class="btn btn-secondary">{% if record.name|lower == 'logo pack' %}Download PDF{% else %} Download {% endif %}</a>
+                            <a href="{{record.file_pdf.path}}" target="_blank" class="btn btn-secondary">{% if record.name|lower == 'logo pack' %}PDF{% else %} Download {% endif %}</a>
                         </div>
                         {% endif %}
                     </div>
