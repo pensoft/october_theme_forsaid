@@ -573,12 +573,10 @@
     .forsaid_will{
         ol {
             //max-width: 350px;
-            counter-reset: my-awesome-counter;
             list-style: none;
             padding-left: 0px;
         }
         ol li {
-            counter-increment: my-awesome-counter;
             position: relative;
             width: 37%;
             display: inline-flex;
@@ -588,21 +586,46 @@
                 margin: 20px 0px 40px 5px;
                 width: 80%;
             });
-        }
-        ol li::before {
-            content: counter(my-awesome-counter);
-            color: white;
-            width: 34px;
-            height: 34px;
-            background: @green-color;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-weight: 800;
+
+            &::before {
+                color: white;
+                width: 34px;
+                height: 34px;
+                background: @green-color;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-weight: 800;
+                content: ' ';
+            }
+            &:nth-of-type(1){
+                &::before {
+                    background: url("../../assets/images/objective1.svg") center no-repeat;
+                    background-size: contain;
+                }
+            }
+            &:nth-of-type(2){
+                &::before {
+                    background: url("../../assets/images/objective2.svg") center no-repeat;
+                    background-size: contain;
+                }
+            }
+            &:nth-of-type(3){
+                &::before {
+                    background: url("../../assets/images/objective3.svg") center no-repeat;
+                    background-size: contain;
+                }
+            }
+            &:nth-of-type(4){
+                &::before {
+                    background: url("../../assets/images/objective4.svg") center no-repeat;
+                    background-size: contain;
+                }
+            }
         }
 
     }
