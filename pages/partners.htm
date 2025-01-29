@@ -15,11 +15,10 @@ description_limit = 0
 ==
 <?php
 use Pensoft\Partners\Models\Partners;
-use Pensoft\Cardprofiles\Models\Profiles;
+use Rainlab\User\Models\User as Profiles;
 
 function onStart(){
 	$this['partners'] =  Partners::where('type', 1)->get();
-$this['members'] = Profiles::where('category_id', 3)->get();
 
 }
 
@@ -31,7 +30,7 @@ $this['partners'] =  Partners::whereRaw('country_code ILIKE \'%'.post('code').'%
 }
 $this['insider_members'] = new class {
 public function getIM($id) {
-return Profiles::where('partner_id', $id)->where('category_id',  3)->get();
+return Profiles::where('is_visible', 1)->where('partner_id', $id)->orderBy('name')->get();
 }
 };
 }
@@ -43,7 +42,7 @@ $this['partners'] =  Partners::where('id', post('partner_id'))->get();
 }
 $this['insider_members'] = new class {
 public function getIM($id) {
-return Profiles::where('partner_id', $id)->where('category_id',  3)->get();
+return Profiles::where('is_visible', 1)->where('partner_id', $id)->orderBy('name')->get();
 }
 };
 }

@@ -18,15 +18,15 @@
                             <div class="coordinator_image">
                                 {% if profile.avatar %}
                                 <!--                            <img alt="{{ profile.names }}" src="{{profile.avatar.thumb(175,145,{'mode':'crop'})}}">-->
-                                <img alt="{{ profile.names }}" src="{{profile.avatar.thumb(305,190,{'mode':'crop'})}}">
+                                <img alt="{{ profile.name }} {{ profile.surname }}" src="{{profile.avatar.thumb(305,190,{'mode':'crop'})}}">
                                 {% else %}
-                                <img alt="{{ profile.names }}" src="{{ 'avatar.svg'|media }}" width="305" height="190" class="no-image">
+                                <img alt="{{ profile.name }} {{ profile.surname }}" src="{{'CMS_icons_individuals.svg'|media}}" width="305" height="190" class="no-image">
                                 {% endif %}
                             </div>
                             <div class="col-xs-12 coordinator_info">
-                            <h3>{{ profile.names }}</h3>
+                            <h3>{{ profile.name }} {{ profile.surname }}</h3>
                             <div class="body_c">
-                                {{ profile.content|raw }}
+                                {{ profile.insider_description|raw }}
                                 <a href="javascript:void(0);" onclick="toggleExpandReadMore(this)" class="read_full">Read More</a>
                             </div>
                         </div>
