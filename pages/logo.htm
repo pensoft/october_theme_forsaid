@@ -95,47 +95,62 @@ return Response::download($pathToFile, $fileName, $headers);
 
                     </div>
 
+                    {% if record.name == 'Logo pack' %}
+                    {% set className = 'p-download' %}
+                    {% set labelJPG = 'JPG' %}
+                    {% set labelPNG = 'PNG' %}
+                    {% set labelSVG = 'SVG' %}
+                    {% set labelZIP = 'ZIP' %}
+                    {% set labelPDF = 'PDF' %}
+                    {% else %}
+                    {% set className = 'btn btn-secondary' %}
+                    {% set labelJPG = 'Download' %}
+                    {% set labelPNG = 'Download' %}
+                    {% set labelSVG = 'Download' %}
+                    {% set labelZIP = 'Download' %}
+                    {% set labelPDF = 'Download' %}
 
-                    <div class="links">
+                    {% endif %}
+                    <div class="links {{record.name|slug}}">
                         {% if record.file_jpg %}
-                            <div class="form_container">
-                                {{form_open({ request: 'onDownloadFile' }) }}
-                                <input type="hidden" value="{{record.file_jpg.id}}" name="id">
-                                <button type="submit" data-attach-loading class="btn btn-secondary">Download</button>
-                                {{ form_close() }}
-                            </div>
+                        <div class="form_container">
+                            {{form_open({ request: 'onDownloadFile' }) }}
+                            <input type="hidden" value="{{record.file_jpg.id}}" name="id">
+                            <button type="submit" data-attach-loading class="{{className}}">{{labelJPG}}</button>
+                            {{ form_close() }}
+                        </div>
                         {% endif %}
 
                         {% if record.file_png %}
-                            <div class="form_container">
-                                {{form_open({ request: 'onDownloadFile' }) }}
-                                <input type="hidden" value="{{record.file_png.id}}" name="id">
-                                <button type="submit" data-attach-loading class="btn btn-secondary">Download</button>
-                                {{ form_close() }}
-                            </div>
+                        <div class="form_container">
+                            {{form_open({ request: 'onDownloadFile' }) }}
+                            <input type="hidden" value="{{record.file_png.id}}" name="id">
+                            <button type="submit" data-attach-loading class="{{className}}">{{labelPNG}}</button>
+                            {{ form_close() }}
+                        </div>
                         {% endif %}
 
                         {% if record.file_eps %}
-                            <div class="form_container">
-                                {{form_open({ request: 'onDownloadFile' }) }}
-                                <input type="hidden" value="{{record.file_eps.id}}" name="id">
-                                <button type="submit" data-attach-loading class="btn btn-secondary">Download</button>
-                                {{ form_close() }}
-                            </div>
+                        <div class="form_container">
+                            {{form_open({ request: 'onDownloadFile' }) }}
+                            <input type="hidden" value="{{record.file_eps.id}}" name="id">
+                            <button type="submit" data-attach-loading class="{{className}}">{{labelSVG}}</button>
+                            {{ form_close() }}
+                        </div>
                         {% endif %}
 
                         {% if record.file_zip %}
-                            <div class="form_container">
-                                {{form_open({ request: 'onDownloadFile' }) }}
-                                <input type="hidden" value="{{record.file_zip.id}}" name="id">
-                                <button type="submit" data-attach-loading class="btn btn-secondary">Download</button>
-                                {{ form_close() }}
-                            </div>
+                        <div class="form_container">
+                            {{form_open({ request: 'onDownloadFile' }) }}
+                            <input type="hidden" value="{{record.file_zip.id}}" name="id">
+                            <button type="submit" data-attach-loading class="{{className}}">{{labelZIP}}</button>
+                            {{ form_close() }}
+                        </div>
                         {% endif %}
 
                         {% if record.file_pdf %}
                         <div class="form_container">
-                            <a href="{{record.file_pdf.path}}" target="_blank" class="btn btn-secondary">Download</a>
+                            <a href="{{record.file_pdf.path}}" target="_blank" class="{{className}}">{{labelPDF}}</a>
                         </div>
                         {% endif %}
                     </div>

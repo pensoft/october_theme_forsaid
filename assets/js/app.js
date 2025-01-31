@@ -213,6 +213,27 @@ $(document).ready(function() {
     //     }
     // });
 
+    $('.logo-pack .form_container').each(function (){
+        $(this).wrapAll('<div class="expand_buttons"></div>');
+    });
+    // $('.lang_versions_btn .hidden_btn').wrapAll('<div class="expand_buttons"></div>');
+    $('<a href="javascript:void(0);" class="more_languages btn btn-secondary">Download <i></i></a>').insertAfter('.logo-pack');
+
+
+    $('.more_languages').click(function () {
+        var link = $(this);
+        link.parent().find('.expand_buttons').slideToggle('slow', function() {
+            if ($(this).is(':visible')) {
+                link.addClass('expaned');
+                link.html('Download <i></i>');
+            } else {
+                link.removeClass('expaned');
+                link.html('Download <i></i>');
+            }
+        });
+
+    });
+
 
 
     if($('.news-carousel').length) {

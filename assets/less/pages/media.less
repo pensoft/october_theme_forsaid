@@ -42,20 +42,44 @@
     .expand_buttons{
         width: 100%;
         display: none;
+
+        .p-download{
+            background: url("../../assets/images/download.svg") right center no-repeat;
+            padding: 0 25px 0 0;
+            border: none;
+            background-size: contain;
+            color: #0a612b;
+            font-size: 1em;
+            margin: 5px;
+        }
     }
     .more_languages{
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin: 5px auto;
         color: rgba(5, 31, 32, 0.7);
         position: relative;
         width: fit-content;
         padding-right: 20px;
+        z-index: 1;
+
+        &.btn-secondary{
+            background: none;
+            color: rgba(5, 31, 32, 0.50);
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            .rounded(80px);
+            //height: 43px;
+            padding: 8px 40px 8px 16px;
+            //align-items: center;
+            border: 1px solid rgba(5, 31, 32, 0.50);
+            outline: none;
+        }
 
         &:after{
             content: ' ';
-            background: url("../../assets/images/arrow-down-menu.svg") center no-repeat;
+            background: url("../../assets/images/arrow-down-menu.svg") no-repeat;
             background-position: right 0 center;
             background-size: 14px;
             position: absolute;
@@ -63,7 +87,8 @@
             height: 14px;
             display: block;
             margin-left: 5px;
-            right: 0;
+            right: 16px;
+            z-index: 1;
         }
 
 
@@ -85,6 +110,8 @@
         &:hover{
             opacity: 0.7;
         }
+
+
     }
 }
 .press-releases{
@@ -238,6 +265,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
 
         .breakpoint-large-down({
             justify-content: space-evenly;
@@ -260,10 +288,17 @@
             }
         }
 
+        &.logo-pack{
+            margin-bottom: 20px;
+        }
+
+
+
     }
 
 
 }
+
 
 .flyer-container{
     border-radius: 17px;
