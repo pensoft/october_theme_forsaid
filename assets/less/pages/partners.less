@@ -196,70 +196,100 @@ ul.partners_logos_list li{
             line-height: 145%; /* 29px */
             margin-bottom: 30px;
             margin-top: 20px;
+            text-align: center;
         }
 
         .col-xs-12{
             padding-left: unset;
         }
 
+        .member_info{
+            a{
+                &.email{
+                    background: #051f20 url("../../assets/images/advisory_email.svg") left center no-repeat;
+                    background-position-x: 15px;
+                    background-size: 19px;
+                    padding: 7px 15px 7px 43px;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 112%; /* 24.64px */
+                    letter-spacing: 0.44px;
+                    color: white;
+                    border-radius: 22px;
+                    margin: 0 auto;
+                }
+            }
+        }
+
         .body_c {
-            height: 185px;
+            height: auto;
+            display: none;
             position: relative;
             overflow: hidden;
-            transition: all ease-in-out 0.5s;
+            //transition: all ease-in-out 0.5s;
 
-            &:after {
-                position: absolute;
-                bottom: 0;
-                height: 100%;
-                width: 100%;
-                content: " ";
-                background: linear-gradient(to top, rgba(251, 255, 251, 1) 0%, rgba(251, 255, 251, 1) 20%, rgba(251, 255, 251, 0) 100%);
-                pointer-events: none;
-            }
+            //&:after {
+            //    position: absolute;
+            //    bottom: 0;
+            //    height: 100%;
+            //    width: 100%;
+            //    content: " ";
+            //    background: linear-gradient(to top, rgba(251, 255, 251, 1) 0%, rgba(251, 255, 251, 1) 20%, rgba(251, 255, 251, 0) 100%);
+            //    pointer-events: none;
+            //}
 
             ol {
                 list-style-type: decimal;
                 padding-left: 20px;
             }
 
-            &.changed {
+            //&.changed {
+            //
+            //        //&:after {
+            //        //    position: absolute;
+            //        //    bottom: 0;
+            //        //    height: 100%;
+            //        //    width: 100%;
+            //        //    content: "";
+            //        //    background: none;
+            //        //    pointer-events: none;
+            //        //}
+            //
+            //    a.read_full {
+            //        //&:after {
+            //        //    background: url("../../assets/images/arrow-down-green.svg") right no-repeat;
+            //        //    background-size: contain;
+            //        //    transform: rotate(180deg);
+            //        //}
+            //    }
+            //}
 
-                    &:after {
-                        position: absolute;
-                        bottom: 0;
-                        height: 100%;
-                        width: 100%;
-                        content: "";
-                        background: none;
-                        pointer-events: none;
-                    }
+            //a.read_full {
+            //    color: @link-color;
+            //    display: block;
+            //    text-align: center;
+            //    width: 100%;
+            //    margin: 0 auto;
+            //
+            //    //&:after {
+            //    //    background: url("../../assets/images/arrow-down-green.svg") right no-repeat;
+            //    //    background-size: contain;
+            //    //    content: ' ';
+            //    //    width: 15px;
+            //    //    height: 10px;
+            //    //    display: inline-flex;
+            //    //    margin-left: 10px;
+            //    //}
+            //}
+        }
 
-                a.read_full {
-                    //&:after {
-                    //    background: url("../../assets/images/arrow-down-green.svg") right no-repeat;
-                    //    background-size: contain;
-                    //    transform: rotate(180deg);
-                    //}
-                }
-            }
-
-            a.read_full {
-                position: absolute;
-                top: 165px;
-                color: @link-color;
-                z-index: 2;
-
-                //&:after {
-                //    background: url("../../assets/images/arrow-down-green.svg") right no-repeat;
-                //    background-size: contain;
-                //    content: ' ';
-                //    width: 15px;
-                //    height: 10px;
-                //    display: inline-flex;
-                //    margin-left: 10px;
-                //}
-            }
+        a.read_full {
+            color: @link-color;
+            display: block;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
         }
 
 

@@ -33,18 +33,18 @@ $this['advisory_board'] = Profiles::where('category_id', 2)->get();
                     <img alt="{{ profile.names }}" src="{{'CMS_icons_individuals.svg'|media}}" width="305" height="190" class="no-image">
                     {% endif %}
                 </div>
-                <div class="col-xs-12 coordinator_info">
+                <div class="col-xs-12 member_info">
                     <h3>{{ profile.names }}</h3>
 
+                    {% if profile.email %}
+                    <p align="center"><a href="mailto:{{profile.email}}" class="email" target="_blank">
+                        {{profile.email}}
+                    </a></p>
+                    {% endif %}
                     <div class="body_c">
-                        {% if profile.email %}
-                        <p><a href="mailto:{{profile.email}}" class="email" target="_blank">
-                            {{profile.email}}
-                        </a></p>
-                        {% endif %}
                         {{ profile.content|raw }}
-                        <a href="javascript:void(0);" onclick="toggleExpandReadMore(this)" class="read_full">Read More</a>
                     </div>
+                    <a href="javascript:void(0);" onclick="toggleExpandReadMoreAdvisory(this)" class="read_full">Read More</a>
                 </div>
             </div>
         </div>

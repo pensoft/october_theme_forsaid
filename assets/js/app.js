@@ -354,7 +354,28 @@ $(document).ready(function() {
 
 });
 
+function toggleExpandReadMoreAdvisory(el){
+    var body = $(el).parent().find('.body_c');
+    if(body.is(':visible')){
+        body.slideUp();
+        $(el).html("Read More");
+    }else{
+        body.slideDown();
+        $(el).html("Read Less");
 
+    }
+
+    // var link = $(el);
+    // link.parent().find('.body_c').slideToggle('slow', function() {
+    //     if ($(this).is(':visible')) {
+    //         link.html('Read More');
+    //     } else {
+    //         link.html('Read Less');
+    //     }
+    // });
+    //
+
+}
 function toggleExpandReadMore(el){
     var $el, $ps, $up, totalHeight;
     totalHeight = 185;
