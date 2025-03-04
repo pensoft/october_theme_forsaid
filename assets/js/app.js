@@ -89,6 +89,20 @@ $(document).ready(function() {
     });
 
 
+
+
+    $('body').on('click', '.publications-and-outreach .internal-documents .accordion-toggle', function () {
+        if ($(this).next(".accordion-content").is(':visible')) {
+            $(this).next(".accordion-content").slideUp(300);
+            $(this).children(".plusminus").html('<span class="plus"></span>');
+        } else {
+            $(this).next(".accordion-content").slideDown(300);
+            $(this).children(".plusminus").html('<span class="minus"></span>');
+        }
+    });
+
+
+
     $('.nav-item').children("a").each(function(){
         if($(this).attr('data-toggle') == 'dropdown'){
             $(this).removeAttr('data-toggle')
@@ -291,6 +305,10 @@ $(document).ready(function() {
     }
 
 
+    $('<div class="col-xs-12 col-sm-3 card internal no-border" style="margin-bottom: 15px">\n' +
+        '<a class="folder-background" style="display:flex; background: url(/storage/app/media/Outreach.png) center center no-repeat; background-size: 100px; height: 200px" href="/internal-repository/publications-and-outreach" title="Publications and outreach"></a>\n' +
+        '<h3 class="card-header"><a href="/internal-repository/publications-and-outreach" title="Publications and outreach">Publications and outreach</a></h3>\n' +
+        '</div>').insertAfter($('.card.internal').last());
 
     $('<div class="col-xs-12 col-sm-3 card internal no-border" style="margin-bottom: 15px">\n' +
         '<a class="folder-background" style="display:flex; background: url(/storage/app/media/Reporting-forms-forsaid.svg) center center no-repeat; background-size: 100px; height: 200px" href="/internal-repository/dissemination-report-forms" title="Dissemination report forms"></a>\n' +
@@ -301,6 +319,8 @@ $(document).ready(function() {
         '<a class="folder-background" style="display:flex; background: url(/storage/app/media/Living-documents-forsaid.svg) center center no-repeat; background-size: 100px; height: 200px" href="/internal-repository/living-documents" title="Living documents"></a>\n' +
         '<h3 class="card-header"><a href="/internal-repository/living-documents" title="Living documents">Living documents</a></h3>\n' +
         '</div>').insertAfter($('.card.internal').last());
+
+
 
     $('<small>To download individual image please right click</small>').insertAfter($('.all_images_container'));
 
