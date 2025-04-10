@@ -64,7 +64,11 @@ return Response::download($pathToFile, $fileName, $headers);
 ?>
 ==
 <div class="container">
-    <h1 class="display-1">Brand kit</h1>
+    <h1 class="display-1">
+        <div class="go-back">
+            <a href="{{'media-center'|page}}" class="read-more-arrow"></a>
+        </div>
+        Brand kit</h1>
 
     {% set records = mediaLogosList %}
     {% set displayColumn = mediaLogosList.displayColumn %}
@@ -75,12 +79,7 @@ return Response::download($pathToFile, $fileName, $headers);
 
     {% if records.count() %}
     <div class="row">
-        <div class="col-md-1 col-xs-12">
-            <div class="go-back">
-                <a href="{{'media-center'|page}}" class="read-more-arrow"></a>
-            </div>
-        </div>
-        <div class="col-md-11 col-xs-12">
+        <div class="col-md-12 col-xs-12">
             <div class="row">
                 {% for record in records %}
                 {% spaceless %}
@@ -92,7 +91,6 @@ return Response::download($pathToFile, $fileName, $headers);
                             <img src="{{record.logo_image.path}}" title="{{record.name}}">
                         </div>
                         <p>{{record.name}}</p>
-
                     </div>
 
                     {% if record.name == 'Logo Pack' %}

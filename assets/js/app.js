@@ -371,6 +371,9 @@ $(document).ready(function() {
     });
 
 
+    $('.video_item .card-container .card_image_container').append('<div class="video_animation"><div class="pulse">');
+
+
 
 });
 
@@ -384,16 +387,6 @@ function toggleExpandReadMoreAdvisory(el){
         $(el).html("Read Less");
 
     }
-
-    // var link = $(el);
-    // link.parent().find('.body_c').slideToggle('slow', function() {
-    //     if ($(this).is(':visible')) {
-    //         link.html('Read More');
-    //     } else {
-    //         link.html('Read Less');
-    //     }
-    // });
-    //
 
 }
 function toggleExpandReadMore(el){
