@@ -371,10 +371,6 @@ $(document).ready(function() {
     });
 
 
-    $('.video_item .card-container .card_image_container').append('<div class="video_animation"><div class="pulse">');
-
-
-
 });
 
 function toggleExpandReadMoreAdvisory(el){
