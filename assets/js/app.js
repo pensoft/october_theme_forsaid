@@ -305,10 +305,10 @@ $(document).ready(function() {
     }
 
 
-    $('<div class="col-xs-12 col-sm-3 card internal no-border" style="margin-bottom: 15px">\n' +
-        '<a class="folder-background" style="display:flex; background: url(/storage/app/media/Outreach.png) center center no-repeat; background-size: 100px; height: 200px" href="/internal-repository/publications-and-outreach" title="Publications and outreach"></a>\n' +
-        '<h3 class="card-header"><a href="/internal-repository/publications-and-outreach" title="Publications and outreach">Publications and outreach</a></h3>\n' +
-        '</div>').insertAfter($('.card.internal').last());
+    // $('<div class="col-xs-12 col-sm-3 card internal no-border" style="margin-bottom: 15px">\n' +
+    //     '<a class="folder-background" style="display:flex; background: url(/storage/app/media/Outreach.png) center center no-repeat; background-size: 100px; height: 200px" href="/internal-repository/publications-and-outreach" title="Publications and outreach"></a>\n' +
+    //     '<h3 class="card-header"><a href="/internal-repository/publications-and-outreach" title="Publications and outreach">Publications and outreach</a></h3>\n' +
+    //     '</div>').insertAfter($('.card.internal').last());
 
     $('<div class="col-xs-12 col-sm-3 card internal no-border" style="margin-bottom: 15px">\n' +
         '<a class="folder-background" style="display:flex; background: url(/storage/app/media/Reporting-forms-forsaid.svg) center center no-repeat; background-size: 100px; height: 200px" href="/internal-repository/dissemination-report-forms" title="Dissemination report forms"></a>\n' +

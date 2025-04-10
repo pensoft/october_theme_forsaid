@@ -64,6 +64,9 @@ description_limit = 0
                         {% if this.theme.threads_url %}
                         <a href="{{this.theme.threads_url}}" target="_blank" class="pr p-secondary p-threads normal"></a>
                         {% endif %}
+                        {% if this.theme.subscribe %}
+                        <a href="{{this.theme.subscribe}}" target="_blank" style="width: fit-content; margin-left: 15px;">Subscribe <i class="pr p-subscribe" style="margin-left: 5px;"></i></a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

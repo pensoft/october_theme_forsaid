@@ -87,7 +87,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .title, .head, .page_headi
 h1.display-1{
     color: #051F20;
     //text-align: center;
-    font-size: 48px;
+    font-size: 36px;
     font-style: normal;
     font-weight: 700;
     line-height: 105%; /* 50.4px */
@@ -1013,4 +1013,95 @@ footer .align-items-center{
 
 .no-image{
     object-fit: contain!important;
+}
+
+
+.subscribe-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 32px;
+    line-height: 1.35em;
+    font-weight: 600;
+    .breakpoint-large-down({
+      text-align: center;
+    });
+    .breakpoint-large-down({
+      justify-content: unset;
+    });
+
+    .newsletter_title{
+        background: url("../../assets/images/Newsletter_dots.svg") center no-repeat;
+        background-size: contain;
+        width: 201px;
+        height: 141px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        font-size: 32px;
+
+        .breakpoint-large-down({
+            margin: 0 auto 30px auto;
+        });
+    }
+
+    .subscribe-btn{
+        .breakpoint-large-down({
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+        });
+    }
+
+    .btn-primary{
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        margin-top: 30px;
+        i{
+            background: url("../../assets/images/arrow-subscribe.svg") no-repeat;
+            content: ' ';
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+        }
+    }
+}
+
+
+.subscribe-items {
+    margin-top: 53px;
+    float: right;
+    margin-right: 6px;
+
+  a{
+    margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:hover{
+          background: @dark-color!important;
+          color: @white-color!important;
+      }
+  }
+
+    .breakpoint-large-down({
+        margin-top: 27px;
+        float: right;
+        margin-right: 6px;
+        margin-bottom: 50px;
+    });
+}
+
+.subscriber{
+    font-size: 24px;
+    .btn-subscribe{
+        background: @yellow-color;
+        color: white;
+        border-radius: 8px;
+        padding: 13px 47px;
+        font-size: 24px;
+        margin-top: 30px;
+        display: inline-block;
+    }
 }
