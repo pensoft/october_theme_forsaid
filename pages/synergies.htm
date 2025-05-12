@@ -1,0 +1,186 @@
+url = "/synergies"
+layout = "default"
+title = "Synergies"
+is_hidden = 0
+meta_description = "synergies page"
+seo_keywords = "keywords"
+robot_index = "index"
+robot_follow = "follow"
+
+[siteSearchInclude]
+
+[jumbotron intro]
+jumbotron = "synergies"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron sister_projects]
+jumbotron = "sister-projects"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron partner_projects]
+jumbotron = "more-partnering-projects"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+<?php
+use Pensoft\Synergies\Models\Synergy;
+use Pensoft\Articles\Models\Article;
+use Carbon\Carbon;
+
+function onStart(){
+    $this['research'] = Synergy::where('type', 1)->get();
+    $this['outcomes'] = Synergy::where('type', 2)->get();
+    $this['related_news'] = Article::whereRaw(' id in (SELECT distinct(article_id) FROM pensoft_synergies_articles)')->get();
+}
+?>
+==
+{% component 'siteSearchInclude' %}
+
+<div class="container intro_container">
+    <div class="row mb-4">
+        <div class="col-md-7 col-xs-12 obj-text">{% component 'intro' %}</div>
+        <div class="col-md-5 col-xs-12 end-md center-xs obj-bg_container"><div class="synergies-bg"></div> </div>
+    </div>
+</div>
+
+
+
+<div class="container tabs_container">
+    <div class="tabs">
+        <a class="" href="#Sister-Projects">Sister projects</a>
+        <a class="" href="#Partnering-Projects">More Partnering Projects</a>
+    </div>
+</div>
+
+<div class="container synergies_content_container">
+    <div class="row" id="Sister-Projects">
+        {% component 'sister_projects' %}
+
+        <div class="accordion-border key_0"><!-- 1 --><!-- css 1 -->
+            <div class="row middle-xs accordion-toggle">
+
+                <div class="col-xs start-xs">About the projects</div>
+
+                <div class="col-xs end-xs plusminus"><span class="plus"></span></div>
+            </div>
+
+            <div class="accordion-content" style="display: none;">
+                {% for record in outcomes %}
+                <div class="col-xs-12">
+                    <div class="row start-md center-xs synergy_item middle-xs">
+                        {% if record.logo %}
+                        <div class="synergy-image col-md-3 col-xs-12 center-xs">
+                            <img src="{{record.logo.path}}">
+                            <div class="social_media_links">
+                                {% if record.social_media %}
+                                    {% for social_item in record.social_media %}
+                                        <a href="{{social_item.link}}" target="_blank" class="p-{{social_item.media}} big"></a>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {% if record.url %}
+                                <a href="{{record.url}}" target="_blank" class="p-website"></a>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                        {% endif %}
+                        <div class="synergy-container col-md-9 col-xs-12">
+
+                            <div>{{record.description|raw}}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    <div class="row" id="Partnering-Projects">
+        {% component 'partner_projects' %}
+        <div class="accordion-border key_0"><!-- 1 --><!-- css 1 -->
+            <div class="row middle-xs accordion-toggle">
+
+                <div class="col-xs start-xs">Synergies pursued</div>
+
+                <div class="col-xs end-xs plusminus"><span class="plus"></span></div>
+            </div>
+
+            <div class="accordion-content" style="display: none;">
+                {% for record in research %}
+                <div class="col-xs-12">
+                    <div class="row start-md center-xs synergy_item">
+                            {% if record.logo %}
+                            <div class="synergy-image col-md-3 col-xs-12 center-xs">
+                                <img src="{{record.logo.path}}">
+                            </div>
+                            {% endif %}
+                            <div class="synergy-container col-md-9 col-xs-12">
+                                {% if record.url %}
+                                <a href="{{record.url}}" target="_blank" class="visit_website">Visit website</a>
+                                {% endif %}
+                                <div>{{record.description|raw}}</div>
+                            </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- News -->
+{% if related_news.count %}
+<!-- latest from news -->
+<div class="container-fluid synergies-news">
+    <div class="container">
+        <h1 class="display-1">News</h1>
+    </div>
+
+    <div class="container prev-nex-container">
+        <div class="trigger_prev_arrow"></div>
+        <div class="trigger_next_arrow"></div>
+    </div>
+
+    <div class="trigger_prev"></div>
+    <div class="trigger_next"></div>
+
+    <div class="container synergies-news-slider-container">
+        <div class="related-news-carousel">
+            {% for highlight in related_news %}
+            <div class="home-news-synergies">
+                <div class="row news-item">
+                    <div class="col-md-12 col-xs-12 home-news-cover">
+                        <a href="/news/{{highlight.slug}}">
+                            <img src="{{ highlight.cover.path}}" alt="{{ highlight.title }}">
+                        </a>
+                    </div>
+                    <div class="col-md-12 col-xs-12 news-content">
+                        <a href="/news/{{highlight.slug}}">
+                            <div class="news-title">{{ highlight.title|length > 100 ? highlight.title|slice(0, 100)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.title|replace({"&nbsp;": " ", ".": ". "})  }}</div></a>
+                        <p class="news-date">{{ highlight.published_at|date('d M Y') }}</p>
+                        <a href="/news/{{highlight.slug}}">
+                            <div class="row read-more-row">
+                                <div class="col-xs"><div class="read-more">{{'Read more' |_}}</div></div>
+                                <div class="col-xs end-xs"><div class="read-more-arrow"></div></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endif %}

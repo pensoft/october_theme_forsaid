@@ -69,7 +69,7 @@ $(document).ready(function() {
     }
 
 
-    $('body').on('click', '.work_packages .accordion-toggle, .mission .accordion-toggle, .partners-insider .accordion-toggle', function () {
+    $('body').on('click', '.work_packages .accordion-toggle, .mission .accordion-toggle, .partners-insider .accordion-toggle, .synergies_content_container .accordion-toggle', function () {
         if ($(this).next(".accordion-content").is(':visible')) {
             $(this).next(".accordion-content").slideUp(300);
             $(this).children().find(".plusminus").text('+');
@@ -201,31 +201,6 @@ $(document).ready(function() {
         $('.partners_list .key_0, .partners_list .key_2, .partners_list .key_4, .partners_list .key_6, .partners_list .key_8, .partners_list .key_10, .partners_list .key_12, .partners_list .key_14, .partners_list .key_16, .partners_list .key_18').wrapAll('<div class="col-md-6 col-xs-12"></div>');
         $('.partners_list .key_1, .partners_list .key_3, .partners_list .key_5, .partners_list .key_7, .partners_list .key_9, .partners_list .key_11, .partners_list .key_13, .partners_list .key_15, .partners_list .key_17, .partners_list .key_19').wrapAll('<div class="col-md-6 col-xs-12"></div>');
     }
-    //
-    // $('.all_container').each(function (){
-    //     if ($(this).text().toLowerCase() == 'logo pack'){
-    //         // $('.logo .links').each(function (){
-    //             $(this).parent().find('.links .form_container').wrapAll('<div class="expand_buttons"></div>');
-    //         // });
-    //         // $('.lang_versions_btn .hidden_btn').wrapAll('<div class="expand_buttons"></div>');
-    //         $('<a href="javascript:void(0);" class="more_languages">Download <i></i></a>').insertAfter('.expand_buttons');
-    //
-    //
-    //         $('.more_languages').click(function () {
-    //             var link = $(this);
-    //             link.parent().find('.expand_buttons').slideToggle('slow', function() {
-    //                 if ($(this).is(':visible')) {
-    //                     link.addClass('expaned');
-    //                     link.html('Download <i></i>');
-    //                 } else {
-    //                     link.removeClass('expaned');
-    //                     link.html('Download <i></i>');
-    //                 }
-    //             });
-    //
-    //         });
-    //     }
-    // });
 
     $('.logo-pack .form_container').each(function (){
         $(this).wrapAll('<div class="expand_buttons"></div>');
@@ -264,6 +239,61 @@ $(document).ready(function() {
             speed: 1000,
             centerPadding: '6%',
             slidesToScroll: 2,
+            // centerPadding: '40px',
+            arrows: false,
+            dots: true,
+
+
+            // centerPadding: '0px',
+
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        dots: true,
+                        centerMode: true,
+                        centerPadding: '2%',
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+
+        $(".trigger_prev").click(function () {
+            $(".slick-prev").click();
+            return false;
+        });
+        $(".trigger_next").click(function () {
+            $(".slick-next").click();
+            return false;
+        });
+
+        $(".trigger_prev_arrow").click(function () {
+            $(".slick-prev").click();
+            return false;
+        });
+        $(".trigger_next_arrow").click(function () {
+            $(".slick-next").click();
+            return false;
+        });
+    }
+
+
+    if($('.related-news-carousel').length) {
+        /* News highlights carousel **/
+        $('.related-news-carousel').slick({
+            autoplay: false,
+            // autoplaySpeed: 2000,
+            draggable: true,
+            // pauseOnHover: true,
+            centerMode: false,
+            variableWidth: true,
+            infinite: true,
+            slidesToShow: 3,
+            speed: 1000,
+            centerPadding: '6%',
+            slidesToScroll: 3,
             // centerPadding: '40px',
             arrows: false,
             dots: true,
@@ -367,6 +397,78 @@ $(document).ready(function() {
                     break;
             }
             $(this).text('');
+        });
+    });
+
+
+    $('.synergies .tabs').each(function(){
+        // For each set of tabs, we want to keep track of
+        // which tab is active and its associated content
+        var $active, $content, $links = $(this).find('a');
+        var speed = "fast";
+        var activeTab = $(location.hash);
+        // If the location.hash matches one of the links, use that as the active tab.
+        // If no match is found, use the first link as the initial active tab.
+        $active = $($links.filter("[href=\'"+location.hash+"\']")[0] || $links[0]);
+
+        if($(this).parent().parent().hasClass('synergies')){
+            $active.addClass('active');
+        }
+
+        $content = $($active[0].hash);
+
+        // Hide the remaining content
+        $links.not($active).each(function () {
+            $(this.hash).hide();
+        });
+
+        if(activeTab.length){
+            $content.slideDown(speed);
+            //scroll to element
+            $('html, body').animate({
+                scrollTop:  activeTab.offset().top - $('header').height()
+            }, speed);
+        }
+
+        // Bind the click event handler
+        $(this).find("a").click(function (e) {
+            if($(this).hasClass('active')) {
+                $content.slideDown({
+                    scrollTop: $content.offset().top - $('header').height()
+                }, speed);
+                var screenSize = getScreenSize();
+                if (screenSize.width < 800) {
+                    // scroll to element
+                    $('html, body').animate({
+                        scrollTop: $content.offset().top - $('header').height() + 300  // mobile
+                    }, speed);
+                }else{
+                    // //scroll to element icons top
+                    // $('html, body').animate({
+                    //     scrollTop:  $content.offset().top - $('header').height()
+                    // }, speed);
+                }
+                e.preventDefault();
+                return false;
+            }
+            // Make the old tab inactive.
+            $active.removeClass('active');
+            $content.hide();
+
+            // Update the variables with the new link and content
+            $active = $(this);
+            $content = $(this.hash);
+
+            location.hash = $active[0].hash;
+
+            // Make the tab active.
+            $active.addClass('active');
+            $content.slideDown({
+                scrollTop: $content.offset().top - $('header').height()
+            }, speed);
+
+            // Prevent the anchor\'s default click action
+            e.preventDefault();
         });
     });
 

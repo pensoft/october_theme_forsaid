@@ -654,3 +654,227 @@
     }
 }
 
+
+
+
+.synergies {
+
+    .intro_container{
+        padding-bottom: 0;
+    }
+
+    .synergies-news-slider-container{
+        padding: 0;
+    }
+
+    .synergies-bg{
+        display: block;
+        width: 90%;
+        height: 280px;
+        flex-shrink: 0;
+        border-radius: 17px;
+        background: @dark-color;
+        position: relative;
+        justify-content: end;
+        float: right;
+        margin-top: 40%;
+
+        &:after{
+            content: ' ';
+            position: absolute;
+            background: url("../../assets/images/Forest-Image.png") top left no-repeat;
+            background-size: contain;
+            height: 430px;
+            width: 100%;
+            left: 0;
+            top: -54%;
+        }
+
+        .breakpoint-large-down({
+            float: none;
+            margin-top: 120px;
+        });
+    }
+
+    .tabs_container{
+        position: relative;
+        padding: 0;
+        .tabs{
+            position: absolute;
+            top: -125px;
+
+            .breakpoint-large-down({
+                position: relative;
+                top: 0;
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+            });
+
+            .breakpoint-large-down({
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+            });
+
+            a{
+                border-radius: 46.6px;
+                background: #80A942 url("../../assets/images/arrow-down-white.svg") center no-repeat;
+                background-size: 12px;
+                background-position: center right 16px;
+                padding: 6px 34px 6px 16px;
+                color: #FBFFFB;
+                margin-right: 15px;
+
+                .breakpoint-large-down({
+                    margin-right: 0;
+                    margin-bottom: 10px;
+                });
+
+                &:hover, &.active{
+                    background: #60883C url("../../assets/images/arrow-down-white.svg") center no-repeat;
+                    background-size: 12px;
+                    background-position: center right 16px;
+                }
+            }
+        }
+    }
+
+    .synergies_content_container{
+        padding: 0;
+        .breakpoint-large-down({
+            padding: 10px;
+        });
+        .container{
+            padding: 0;
+            .breakpoint-large-down({
+                padding: 10px;
+            });
+        }
+    }
+
+
+
+    /*------------------------*/
+    /*      accordion         */
+    /*------------------------*/
+
+    .synergies_content_container .accordion-toggle{
+        border-radius: 46.6px;
+        background: #80A942 ;
+        padding: 6px 16px 6px 16px;
+        color: #FBFFFB;
+        width: fit-content;
+        display: inline-flex;
+        white-space: nowrap;
+        cursor: pointer;
+        &:hover, &.active{
+            background: #60883C;
+        }
+
+    }
+    .synergies_content_container .accordion-content{
+        width: 100%;
+        .synergy_item{
+            width: 100%;
+            padding: 0;
+            margin: 20px 0;
+
+            .synergy-image{
+                border-radius: 10.022px;
+                border: 1.432px solid rgba(96, 136, 60, 0.65);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 126px;
+                width: 100%;
+                flex-direction: column;
+                img{
+                    width: 120px;
+                    height: 60px;
+                    object-fit: contain;
+                }
+            }
+
+            .synergy-container{
+                padding-left: 20px!important;
+                .breakpoint-large-down({
+                    padding-left: 0!important;
+                });
+            }
+
+            .social_media_links{
+                display: inline-flex;
+                a{
+                    color: white;
+                    background: #0A612B;
+                    width: 23px;
+                    height: 23px;
+                    border-radius: 3px;
+                    font-size: 90%;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 2px;
+                    &.p-bluesky{
+                        font-size: 60%;
+                    }
+
+                    &.p-website{
+                        background: url("../../assets/images/synergies-web.svg") center no-repeat;
+                        background-size: contain;
+                        &:before{
+                            display: none;
+                        }
+                    }
+
+                    &.p-instagram{
+                        background: url("../../assets/images/synergies-instagram.svg") center no-repeat;
+                        background-size: contain;
+                        &:before{
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .visit_website{
+                border-radius: 46.6px;
+                background: #80A942 url("../../assets/images/visit-website-icon.svg") center no-repeat;
+                background-size: 17px;
+                background-position: center left 16px;
+                padding: 8px 16px 8px 39px;
+                color: #FBFFFB;
+                margin: 0px 0 19px 0;
+                display: inline-flex;
+                &:hover, &.active{
+                    background: #60883C url("../../assets/images/visit-website-icon.svg") center no-repeat;
+                    background-size: 17px;
+                    background-position: center left 16px;
+                }
+            }
+        }
+
+    }
+
+    .synergies_content_container .plusminus{
+        display: flex;
+        justify-content: end;
+        .plus, .minus{
+            color: white;
+        }
+
+        .minus{
+            opacity: 1;
+        }
+
+        .plus::before{
+            content: '\002B';
+        }
+        .minus::before{
+            content: '\2212';
+        }
+    }
+
+}
+
