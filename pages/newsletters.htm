@@ -89,8 +89,10 @@ return Response::download($pathToFile, $fileName, $headers);
                             <div class="flyer-container {{record.name}}">
                                 <img src="{{record.newsletter_image.path}}" title="{{record.name}}">
                             </div>
-                            <p>{{record.name}}</p>
+                            
                         </div>
+
+                        <p>{{record.name}}</p>
 
                         <div class="links">
                             {% if record.url %}
