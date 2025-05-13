@@ -79,19 +79,20 @@ function onStart(){
                         {% if record.logo %}
                         <div class="synergy-image">
                             <img src="{{record.logo.path}}">
-                            <div class="social_media_links">
-                                {% if record.social_media %}
-                                    {% for social_item in record.social_media %}
-                                        <a href="{{social_item.link}}" target="_blank" class="p-{{social_item.media}} big"></a>
-                                    {% endfor %}
-                                {% endif %}
-
-                                {% if record.url %}
-                                <a href="{{record.url}}" target="_blank" class="p-website"></a>
-                                {% endif %}
-                            </div>
-
                         </div>
+
+                        <div class="social_media_links">
+                            {% if record.social_media %}
+                            {% for social_item in record.social_media %}
+                            <a href="{{social_item.link}}" target="_blank" class="p-{{social_item.media}} big"></a>
+                            {% endfor %}
+                            {% endif %}
+
+                            {% if record.url %}
+                            <a href="{{record.url}}" target="_blank" class="p-website"></a>
+                            {% endif %}
+                        </div>
+                        
                         {% endif %}
                     </div>
                 </div>
