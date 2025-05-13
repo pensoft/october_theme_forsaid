@@ -759,6 +759,10 @@
     /*      accordion         */
     /*------------------------*/
 
+    .synergies_content_container .accordion-border{
+        width: 100%;
+    }
+
     .synergies_content_container .accordion-toggle{
         border-radius: 46.6px;
         background: #80A942 ;
@@ -775,10 +779,16 @@
     }
     .synergies_content_container .accordion-content{
         width: 100%;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
         .synergy_item{
-            width: 100%;
             padding: 0;
             margin: 20px 0;
+            width: 325px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
 
             .synergy-image{
                 border-radius: 10.022px;
@@ -787,12 +797,13 @@
                 align-items: center;
                 justify-content: center;
                 height: 126px;
-                width: 100%;
+                width: 325px;
+                max-width: 100%;
                 flex-direction: column;
-                min-width: 250px;
+
                 img{
-                    width: 120px;
-                    height: 60px;
+                    width: 50%;
+                    height: 50%;
                     object-fit: contain;
                 }
             }
@@ -806,9 +817,10 @@
 
             .social_media_links{
                 display: inline-flex;
+                margin-top: 10px;
                 a{
                     color: white;
-                    background: #0A612B;
+                    background: #80А942;
                     width: 23px;
                     height: 23px;
                     border-radius: 3px;
@@ -822,7 +834,7 @@
                     }
 
                     &.p-website{
-                        background: url("../../assets/images/synergies-web.svg") center no-repeat;
+                        background: url("../../assets/images/s-Website.svg") center no-repeat;
                         background-size: contain;
                         &:before{
                             display: none;
@@ -830,7 +842,23 @@
                     }
 
                     &.p-instagram{
-                        background: url("../../assets/images/synergies-instagram.svg") center no-repeat;
+                        background: url("../../assets/images/s-Instagram.svg") center no-repeat;
+                        background-size: contain;
+                        &:before{
+                            display: none;
+                        }
+                    }
+
+                    &.p-bluesky{
+                        background: url("../../assets/images/s-Bluesky.svg") center no-repeat;
+                        background-size: contain;
+                        &:before{
+                            display: none;
+                        }
+                    }
+
+                    &.p-linkedin{
+                        background: url("../../assets/images/s-Linkedin.svg") center no-repeat;
                         background-size: contain;
                         &:before{
                             display: none;
@@ -846,8 +874,8 @@
                 background-position: center left 16px;
                 padding: 8px 16px 8px 39px;
                 color: #FBFFFB;
-                margin: 0px 0 19px 0;
-                display: inline-flex;
+                width: fit-content;
+                margin: 20px auto;
                 &:hover, &.active{
                     background: #60883C url("../../assets/images/visit-website-icon.svg") center no-repeat;
                     background-size: 17px;

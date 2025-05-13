@@ -72,12 +72,12 @@ function onStart(){
                 <div class="col-xs end-xs plusminus"><span class="plus"></span></div>
             </div>
 
-            <div class="accordion-content" style="display: none;">
+            <div class="row accordion-content" style="display: none;">
                 {% for record in outcomes %}
-                <div class="col-xs-12">
+                <div class="col-md-4 col-xs-12">
                     <div class="row start-md center-xs synergy_item middle-xs">
                         {% if record.logo %}
-                        <div class="synergy-image col-md-3 col-xs-12 center-xs">
+                        <div class="synergy-image">
                             <img src="{{record.logo.path}}">
                             <div class="social_media_links">
                                 {% if record.social_media %}
@@ -93,10 +93,6 @@ function onStart(){
 
                         </div>
                         {% endif %}
-                        <div class="synergy-container col-md-9 col-xs-12">
-
-                            <div>{{record.description|raw}}</div>
-                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -114,21 +110,19 @@ function onStart(){
                 <div class="col-xs end-xs plusminus"><span class="plus"></span></div>
             </div>
 
-            <div class="accordion-content" style="display: none;">
+            <div class="row accordion-content" style="display: none;">
                 {% for record in research %}
-                <div class="col-xs-12">
+                <div class="col-md-4 col-xs-12">
                     <div class="row start-md center-xs synergy_item">
                             {% if record.logo %}
-                            <div class="synergy-image col-md-3 col-xs-12 center-xs">
+                            <div class="synergy-image">
                                 <img src="{{record.logo.path}}">
                             </div>
                             {% endif %}
-                            <div class="synergy-container col-md-9 col-xs-12">
-                                {% if record.url %}
-                                <a href="{{record.url}}" target="_blank" class="visit_website">Visit website</a>
-                                {% endif %}
-                                <div>{{record.description|raw}}</div>
-                            </div>
+
+                            {% if record.url %}
+                             <a href="{{record.url}}" target="_blank" class="visit_website">Visit website</a>
+                            {% endif %}
                     </div>
                 </div>
                 {% endfor %}
