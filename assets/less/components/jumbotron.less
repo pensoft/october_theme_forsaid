@@ -258,7 +258,7 @@
         }
 
         &.slick-prev {
-            background: url("../../assets/images/arrows-news.svg") center no-repeat;
+            //background: url("../../assets/images/arrows-news.svg") center no-repeat;
             background-size: 42px;
             width: 42px;
             height: 42px;
@@ -267,13 +267,13 @@
             top: 45px;
             z-index: 10;
             &:hover{
-                background: url("../../assets/images/arrows-news-hover.svg") center no-repeat;
+                //background: url("../../assets/images/arrows-news-hover.svg") center no-repeat;
                 background-size: 42px;
             }
         }
 
         &.slick-next {
-            background: url("../../assets/images/arrows-news.svg") center no-repeat;
+            //background: url("../../assets/images/arrows-news.svg") center no-repeat;
             background-size: 42px;
             width: 42px;
             height: 42px;
@@ -283,7 +283,7 @@
             z-index: 10;
             transform: rotate(180deg);
             &:hover{
-                background: url("../../assets/images/arrows-news-hover.svg") center no-repeat;
+                //background: url("../../assets/images/arrows-news-hover.svg") center no-repeat;
                 background-size: 42px;
             }
 
@@ -466,6 +466,13 @@
 
     .background{
 
+        .background-content{
+            padding-right: 40px!important;
+            .breakpoint-large-down({
+                padding-right: 0!important;
+            });
+        }
+
         .at_risk_background_info{
             padding-right: 50px;
             .breakpoint-large-down({
@@ -476,7 +483,7 @@
             position: relative;
             transition: all 1s linear;
             .at-risk-regions-warning{
-                //visibility: hidden;
+                visibility: hidden;
                 position: absolute;
                 display: flex;
                 padding: 8px 27px 8px 52px;

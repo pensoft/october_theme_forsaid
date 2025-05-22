@@ -1,4 +1,25 @@
-$(window).scroll(animateNumbers);
+$.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+};
+
+
+$(window).on('resize scroll', function() {
+    if ($('.num_text').isInViewport()) {
+        $('.highlighted').each(function () {
+                $(this).css({ fill: '#60883C' });
+            }) ;
+    } else {
+        $('.highlighted').each(function () {
+            $(this).css({ fill: '#deeddd' });
+        }) ;
+    }
+});
 
 var viewed = false;
 
@@ -7,17 +28,6 @@ var width = window.innerWidth;
 var documentHasScroll = function() {
     return window.innerHeight <= document.body.offsetHeight;
 };
-
-// window.addEventListener('scroll', function (e) {
-//     var headernavbar = document.getElementById("headernavbar");
-//     if (window.scrollY > headernavbar.offsetHeight){
-//         var headerNavbarNav = document.querySelector('#headerNavbarNav')
-//         headernavbar.classList.add('scrolled');
-//     }else{
-//         headernavbar.classList.remove('scrolled');
-//     }
-// });
-
 
 
 $(document).ready(function() {
@@ -634,21 +644,6 @@ function requestFormPartners() {
 	})
 }
 
-function isScrolledIntoView(elem) {
-	var docViewTop = $(window).scrollTop();
-	var docViewBottom = docViewTop + $(window).height();
-
-	if($(elem).height()){
-		var elemTop = $(elem).offset().top;
-		var elemBottom = elemTop + $(elem).height();
-
-		return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-	}
-	return;
-
-}
-
-
 
 function scrollDown(){
 	var element = $('#layout-content');
@@ -1060,33 +1055,6 @@ function onCustomSinglePartnerA(pId) {
     });
 }
 
-
-// function initButtonStyle(){
-//     $( "<span class=\"su_button_circle desplode-circle\"></span>" ).insertBefore( ".btn.btn-primary" );
-//     $('.btn.btn-primary').wrapInner('<span class="button_text_container">');
-//     $('.btn.btn-primary').addClass('button_su_inner').removeClass('btn-primary');
-//     $('.col-xs-12.col-md-3.end-xs.end-md').wrapInner('<div class="button_su download">');
-//     $('.library form:has(.button_su_inner)').wrap('<div class="button_su download">');
-//     $('.library a .button_text_container').text('Download');
-// }
-
-function animateNumbers() {
-	if (isScrolledIntoView($(".numbers")) && !viewed) {
-		viewed = true;
-		$('.count').each(function () {
-			var size = $(this).text().split(".")[1] ? $(this).text().split(".")[1].length : 0;
-			$(this).prop('Counter',0).animate({
-				Counter: $(this).text()
-			}, {
-				duration: 1800,
-				easing: 'swing',
-				step: function (now) {
-					$(this).text(parseFloat(now).toFixed(size));
-				}
-			});
-		});
-	}
-}
 
 function fetchMails(i, searchStr){
     // $('.group_mailing_list').hide();
