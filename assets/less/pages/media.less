@@ -19,7 +19,7 @@
         padding-left: 0;
     }
 
-    p:not(.card_title){
+    p:not(.card_title), h2{
         color: @primary-color;
         font-size: 18px;
         font-style: normal;
@@ -136,8 +136,10 @@
 }
 
 .newsletters{
-    p:not(.card_title){
+    p:not(.card_title), h2{
+        position: relative;
         min-height: 45px;
+        left: 0px;
         justify-content: flex-start !important;
         align-items: flex-start !important;
     }
@@ -145,7 +147,7 @@
 
 .press-releases{
 
-    h1.display-1{
+    h1.display-1, h2{
         display: flex;
         align-items: center;
     }
@@ -167,7 +169,7 @@
 }
 
 .newsletters{
-    p:not(.card_title){
+    p:not(.card_title), h2{
         color: @primary-color;
         font-size: 18px;
         font-style: normal;
@@ -453,10 +455,12 @@
         align-self: center;
     }
 
-    .card_title{
+    .card_title, h2{
         color: @primary-color!important;
         font-size: 18px;
         font-style: normal;
+        position: relative;
+        left: 0;
         font-weight: 800 !important;
         margin-top: 20px;
         line-height: 125%; /* 22.5px */

@@ -20,13 +20,23 @@ description_limit = 0
 ==
 {% component 'siteSearchInclude' %}
 
-<div class="container objectives_first_container">
-    <div class="row">
-        <div class="col-md-7 col-xs-12 obj-text">{% component 'obj' %}</div>
-        <div class="col-md-5 col-xs-12 end-md center-xs obj-bg_container"><div class="obj-bg"></div> </div>
+<section aria-labelledby="objectives-heading">
+    <div class="container objectives_first_container">
+        <h1 id="objectives-heading" class="sr-only">Objectives</h1>
+        <div class="row">
+            <div class="col-md-7 col-xs-12 obj-text">
+                {% component 'obj' %}
+            </div>
+            <div class="col-md-5 col-xs-12 end-md center-xs obj-bg_container">
+                <div class="obj-bg" role="img" aria-label="Objectives illustration"></div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
-<div class="container forsaid_will">
-    {% component 'will' %}
-</div>
+<section aria-labelledby="forsaid-will-heading">
+    <div class="container forsaid_will">
+        <h2 id="forsaid-will-heading" class="sr-only">What FORSAID Will Do</h2>
+        {% component 'will' %}
+    </div>
+</section>

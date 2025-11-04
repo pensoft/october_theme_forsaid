@@ -53,83 +53,120 @@ function onStart(){
 }
 ?>
 ==
-<div class="container mission">
-    <div class="map_container">
-        {% partial 'homepage-map' %}
+<section aria-labelledby="mission-heading">
+    <div class="container mission">
+        <h1 id="mission-heading" class="sr-only">Our Mission</h1>
+        <div class="map_container" role="img" aria-label="Interactive map showing project coverage">
+            {% partial 'homepage-map' %}
+        </div>
+        {% component 'mission' %}
     </div>
-{% component 'mission' %}
-</div>
+</section>
 
-
-<div class="container-fluid tools">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-xs-12" data-aos="zoom-in" data-aos-delay="100">
-                <div class="tools_item innovative-tools">{% component 'jumbotron' %}</div>
-            </div>
-            <div class="col-md-4 col-xs-12" data-aos="zoom-in" data-aos-delay="400">
-                <div class="tools_item detection-monitoring">{% component 'jumbotron2' %}</div>
-            </div>
-            <div class="col-md-4 col-xs-12" data-aos="zoom-in" data-aos-delay="700">
-                <div class="tools_item supporting-plant-health">{% component 'jumbotron3' %}</div>
+<section aria-labelledby="tools-heading">
+    <div class="container-fluid tools">
+        <div class="container">
+            <h2 id="tools-heading" class="sr-only">Project Tools and Approach</h2>
+            <div class="row">
+                <article class="col-md-4 col-xs-12" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="tools_item innovative-tools">{% component 'jumbotron' %}</div>
+                </article>
+                <article class="col-md-4 col-xs-12" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="tools_item detection-monitoring">{% component 'jumbotron2' %}</div>
+                </article>
+                <article class="col-md-4 col-xs-12" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="tools_item supporting-plant-health">{% component 'jumbotron3' %}</div>
+                </article>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- News -->
 {% if highlights.count %}
-<!-- latest from news -->
-<div class="container-fluid highlights-news">
-    <div class="container">
-        <h1 class="display-1">Latest news</h1>
-    </div>
+<section aria-labelledby="latest-news-heading">
+    <div class="container-fluid highlights-news">
+        <div class="container">
+            <h2 id="latest-news-heading">Latest news</h2>
+        </div>
 
-    <div class="container prev-nex-container">
-        <div class="trigger_prev_arrow"></div>
-        <div class="trigger_next_arrow"></div>
-    </div>
+        <div class="container prev-nex-container">
+            <a class="trigger_prev trigger_prev_arrow"
+                    aria-label="Previous news"
+                    aria-controls="news-carousel">
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="trigger_next trigger_next_arrow"
+                    aria-label="Next news"
+                    aria-controls="news-carousel">
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
 
-    <div class="trigger_prev"></div>
-    <div class="trigger_next"></div>
-
-    <div class="container highlights-news-slider-container">
-        <div class="news-carousel">
-            {% for highlight in highlights %}
-            <div class="home-news-highlights">
-                <div class="row news-item">
-                    <div class="col-md-12 col-xs-12 home-news-cover">
-                        <a href="/news/{{highlight.slug}}">
-                            <img src="{{ highlight.cover.path}}" alt="{{ highlight.title }}">
-                        </a>
+        <div class="container highlights-news-slider-container">
+            <div
+                id="news-carousel"
+                class="news-carousel"
+                role="region"
+                aria-label="Latest news carousel"
+                aria-live="polite">
+                {% for highlight in highlights %}
+                <article class="home-news-highlights">
+                    <div class="row news-item">
+                        <div class="col-md-12 col-xs-12 home-news-cover">
+                            <a href="/news/{{highlight.slug}}"
+                               aria-label="Read article: {{highlight.title|striptags}}">
+                                <img src="{{ highlight.cover.path}}"
+                                     alt="{{highlight.title|striptags}}">
+                            </a>
+                        </div>
+                        <div class="col-md-12 col-xs-12 news-content">
+                            <h3 class="news-title">
+                                <a href="/news/{{highlight.slug}}">
+                                    {{ highlight.title|length > 100 ? highlight.title|slice(0, 100)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.title|replace({"&nbsp;": " ", ".": ". "}) }}
+                                </a>
+                            </h3>
+                            <time class="news-date" datetime="{{highlight.published_at|date('Y-m-d')}}">
+                                {{ highlight.published_at|date('d M Y') }}
+                            </time>
+                            <a href="/news/{{highlight.slug}}"
+                               class="read-more-link"
+                               aria-label="Read more about {{highlight.title|striptags}}">
+                                <div class="row read-more-row">
+                                    <div class="col-xs">
+                                        <div class="read-more">{{'Read more' |_}}</div>
+                                    </div>
+                                    <div class="col-xs end-xs">
+                                        <div class="read-more-arrow" aria-hidden="true"></div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-md-12 col-xs-12 news-content">
-                        <a href="/news/{{highlight.slug}}">
-                            <div class="news-title">{{ highlight.title|length > 100 ? highlight.title|slice(0, 100)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.title|replace({"&nbsp;": " ", ".": ". "})  }}</div></a>
-                        <p class="news-date">{{ highlight.published_at|date('d M Y') }}</p>
-                        <a href="/news/{{highlight.slug}}">
-                            <div class="row read-more-row">
-                                <div class="col-xs"><div class="read-more">{{'Read more' |_}}</div></div>
-                                <div class="col-xs end-xs"><div class="read-more-arrow"></div></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                </article>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
-
-</div>
-
+</section>
 {% endif %}
 
-
-<div class="container subscribe-container">
-    <div class="row middle-xs">
-        <div class="col-md-12 col-xs-12 middle-xs">Subscribe to our newsletter to get the latest<br> updates on mission projects & initiatives!
-        <br>
-            <div class="subscribe-btn"><a href="{{this.theme.subscribe}}" target="_blank" class="btn btn-primary">Subscribe <i></i></a></div>
+<section aria-labelledby="subscribe-heading">
+    <div class="container subscribe-container">
+        <div class="row middle-xs">
+            <div class="col-md-12 col-xs-12 middle-xs">
+                <h2 id="subscribe-heading" class="sr-only">Newsletter Subscription</h2>
+                <p>Subscribe to our newsletter to get the latest updates on mission projects & initiatives!</p>
+                <div class="subscribe-btn">
+                    <a href="{{this.theme.subscribe}}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn-primary"
+                       aria-label="Subscribe to newsletter (opens in new window)">
+                        Subscribe <i aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>

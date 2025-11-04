@@ -63,6 +63,10 @@ nav:not(.navbar){
 
         .news-content{
             padding: 30px;
+
+            ul{
+                padding-left: 40px;
+            }
         }
 
 
@@ -256,11 +260,16 @@ nav:not(.navbar){
             margin-right: 0!important;
             justify-content: space-between;
             height: 100%;
-            .news-title h3{
+            .news-title h3,
+            .news-title h2
+            {
                 font-size: 22px;
                 font-style: normal;
                 font-weight: 700;
                 line-height: 125%; /* 27.5px */
+                a{
+                    color: @navbar-color;
+                }
             }
             .body{
                 color: @primary-color;
@@ -424,6 +433,23 @@ nav:not(.navbar){
     position: relative;
     padding: 50px 0 80px 0;
 
+
+    h2{
+        color: #051F20;
+        text-align: center;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 105%; /* 50.4px */
+        letter-spacing: 0.96px;
+        width: 100%;
+        margin-bottom: 0px;
+        .breakpoint-large-down({
+            text-align: center;
+            margin-bottom: 30px;
+        });
+    }
+
     .highlights-news-slider-container{
         display: block;
         margin: 0 auto;
@@ -452,6 +478,9 @@ nav:not(.navbar){
             font-weight: 800;
             line-height: 125%; /* 27.5px */
             min-height: 130px;
+            a{
+                color: @navbar-color;
+            }
         }
 
         .news-date{
@@ -699,9 +728,17 @@ nav:not(.navbar){
     position: relative;
     padding: 50px 0 80px 0;
 
-    .display-1{
+    h2.display-1{
         text-align: center;
         margin-bottom: 40px;
+        color: #051F20;
+        //text-align: center;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 105%; /* 50.4px */
+        letter-spacing: 0.96px;
+        width: 100%;
     }
 
     .synergies-news-slider-container{
@@ -732,6 +769,9 @@ nav:not(.navbar){
             font-weight: 800;
             line-height: 125%; /* 27.5px */
             min-height: 130px;
+            a{
+                color: @navbar-color;
+            }
         }
 
         .news-date{

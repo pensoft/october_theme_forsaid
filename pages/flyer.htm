@@ -63,12 +63,15 @@ return Response::download($pathToFile, $fileName, $headers);
 }
 ?>
 ==
-<div class="container">
-    <h1 class="display-1">
-        <div class="go-back">
-            <a href="{{'media-center'|page}}" class="read-more-arrow"></a>
-        </div>
-        Promotional materials</h1>
+<section aria-labelledby="promotional-materials-heading">
+    <div class="container">
+        <h1 class="display-1" id="promotional-materials-heading">
+            <div class="go-back" aria-label="Breadcrumb">
+                <a href="{{'media-center'|page}}" class="read-more-arrow"><span class="sr-only">Back to Media Center</span></a>
+            </div>
+            Promotional materials</h1>
+
+
         {% set records = mediaFlyersList %}
         {% set displayColumn = mediaFlyersList.displayColumn %}
         {% set noRecordsMessage = mediaFlyersList.noRecordsMessage %}
@@ -81,24 +84,35 @@ return Response::download($pathToFile, $fileName, $headers);
             <div class="col-md-12 col-xs-12">
                 <div class="row">
                     {% for record in records %}
-                    <div class="col-md-4 col-xs-12 mb-4">
+                    <article class="col-md-4 col-xs-12 mb-4">
                         <div class="all_container">
                             <div class="flyer-container {{record.name}}">
-                                <img src="{{record.flyer_image.path}}" title="{{record.name}}">
+                                <img src="{{record.flyer_image.path}}" alt="{{record.name}} preview">
                             </div>
-                            <p>{{record.name}}</p>
-
+                            <h2>{{record.name}}</h2>
                         </div>
                         <div class="links">
                             {{form_open({ request: 'onDownloadFile' }) }}
                             <input type="hidden" value="{{record.file.id}}" name="id">
-                            <button type="submit" data-attach-loading class="btn btn-secondary">Download</button>
+                            <button type="submit"
+                                    data-attach-loading
+                                    class="btn btn-secondary"
+                                    aria-label="Download {{record.name}}">
+                                Download
+                            </button>
                             {{ form_close() }}
                         </div>
-                    </div>
+                    </article>
                     {% endfor %}
                 </div>
             </div>
         </div>
+        {% else %}
+        <div class="row">
+            <div class="col-xs-12">
+                <p>{{ noRecordsMessage ?: 'No promotional materials available at this time.' }}</p>
+            </div>
+        </div>
         {% endif %}
-</div>
+    </div>
+</section>

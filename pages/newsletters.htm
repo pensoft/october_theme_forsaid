@@ -62,57 +62,71 @@ return Response::download($pathToFile, $fileName, $headers);
 }
 ?>
 ==
-<div class="container">
-    <h1 class="display-1">
-        <div class="go-back">
-            <a href="{{'media-center'|page}}" class="read-more-arrow"></a>
-        </div>
-        Newsletters</h1>
+<section aria-labelledby="newsletters-heading">
+    <div class="container">
+        <h1 class="display-1" id="newsletters-heading">
+            <div class="go-back" aria-label="Breadcrumb">
+                <a href="{{'media-center'|page}}" class="read-more-arrow"><span class="sr-only">Back to Media Center</span></a>
+            </div>
+            Newsletters</h1>
 
-		{% set records = mediaNewslettersList %}
-		{% set displayColumn = mediaNewslettersList.displayColumn %}
-		{% set noRecordsMessage = mediaNewslettersList.noRecordsMessage %}
-		{% set detailsPage = mediaNewslettersList.detailsPage %}
-		{% set detailsKeyColumn = mediaNewslettersList.detailsKeyColumn %}
-		{% set detailsUrlParameter = mediaNewslettersList.detailsUrlParameter %}
+        {% set records = mediaNewslettersList %}
+        {% set displayColumn = mediaNewslettersList.displayColumn %}
+        {% set noRecordsMessage = mediaNewslettersList.noRecordsMessage %}
+        {% set detailsPage = mediaNewslettersList.detailsPage %}
+        {% set detailsKeyColumn = mediaNewslettersList.detailsKeyColumn %}
+        {% set detailsUrlParameter = mediaNewslettersList.detailsUrlParameter %}
 
         {% if records.count() %}
         <div class="row">
-
             <div class="col-md-12 col-xs-12">
                 <div class="row">
                     {% for record in records %}
                     {% spaceless %}
-
-                    <div class="col-md-4 col-xs-12 mb-4">
+                    <article class="col-md-4 col-xs-12 mb-4">
                         <div class="all_container">
                             <div class="flyer-container {{record.name}}">
-                                <img src="{{record.newsletter_image.path}}" title="{{record.name}}">
+                                <img src="{{record.newsletter_image.path}}" alt="{{record.name}} newsletter cover">
                             </div>
-                            
                         </div>
 
-                        <p>{{record.name}}</p>
+                        <h2>{{record.name}}</h2>
 
                         <div class="links">
                             {% if record.url %}
-                            <a href="{{record.url}}" target="_blank" class="btn btn-secondary">Read the newsletter</a>
+                            <a href="{{record.url}}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-secondary"
+                               aria-label="Read {{record.name}} newsletter (opens in new window)">
+                                Read the newsletter
+                            </a>
                             {% endif %}
+
                             {% if record.file %}
-
-                                {{form_open({ request: 'onDownloadFile' }) }}
-                                <input type="hidden" value="{{record.file.id}}" name="id">
-                                <button type="submit" data-attach-loading class="btn btn-secondary">Download</button>
-                                {{ form_close() }}
-
+                            {{form_open({ request: 'onDownloadFile' }) }}
+                            <input type="hidden" value="{{record.file.id}}" name="id">
+                            <button type="submit"
+                                    data-attach-loading
+                                    class="btn btn-secondary"
+                                    aria-label="Download {{record.name}} newsletter">
+                                Download
+                            </button>
+                            {{ form_close() }}
                             {% endif %}
                         </div>
-                    </div>
-
+                    </article>
                     {% endspaceless %}
                     {% endfor %}
                 </div>
             </div>
         </div>
+        {% else %}
+        <div class="row">
+            <div class="col-xs-12">
+                <p>{{ noRecordsMessage ?: 'No newsletters available at this time.' }}</p>
+            </div>
+        </div>
         {% endif %}
-</div>
+    </div>
+</section>

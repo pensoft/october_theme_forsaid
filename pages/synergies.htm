@@ -44,138 +44,214 @@ function onStart(){
 ==
 {% component 'siteSearchInclude' %}
 
-<div class="container intro_container">
-    <div class="row mb-4">
-        <div class="col-md-7 col-xs-12 obj-text">{% component 'intro' %}</div>
-        <div class="col-md-5 col-xs-12 end-md center-xs obj-bg_container"><div class="synergies-bg"></div> </div>
-    </div>
-</div>
-
-
-
-<div class="container tabs_container">
-    <div class="tabs">
-        <a class="" href="#Sister-Projects">Sister projects</a>
-        <a class="" href="#Partnering-Projects">More partnering projects</a>
-    </div>
-</div>
-
-<div class="container synergies_content_container">
-    <div class="row" id="Sister-Projects">
-        {% component 'sister_projects' %}
-
-        <div class="accordion-border key_0"><!-- 1 --><!-- css 1 -->
-            <div class="row middle-xs accordion-toggle">
-
-                <div class="col-xs start-xs">About the projects</div>
-
-                <div class="col-xs end-xs plusminus"><span class="plus"></span></div>
+<section aria-labelledby="synergies-intro-heading">
+    <div class="container intro_container">
+        <h1 id="synergies-intro-heading" class="sr-only">Synergies</h1>
+        <div class="row mb-4">
+            <div class="col-md-7 col-xs-12 obj-text">
+                {% component 'intro' %}
             </div>
-
-            <div class="row accordion-content" style="display: none;">
-                {% for record in outcomes %}
-                <div class="col-md-4 col-xs-12">
-                    <div class="row start-md center-xs synergy_item middle-xs">
-                        {% if record.logo %}
-                        <div class="synergy-image">
-                            <img src="{{record.logo.path}}">
-                        </div>
-
-                        <div class="social_media_links">
-                            {% if record.social_media %}
-                            {% for social_item in record.social_media %}
-                            <a href="{{social_item.link}}" target="_blank" class="p-{{social_item.media}} big"></a>
-                            {% endfor %}
-                            {% endif %}
-
-                            {% if record.url %}
-                            <a href="{{record.url}}" target="_blank" class="p-website"></a>
-                            {% endif %}
-                        </div>
-                        
-                        {% endif %}
-                    </div>
-                </div>
-                {% endfor %}
+            <div class="col-md-5 col-xs-12 end-md center-xs obj-bg_container">
+                <div class="synergies-bg" role="img" aria-label="Synergies illustration"></div>
             </div>
         </div>
-
     </div>
-    <div class="row" id="Partnering-Projects">
-        {% component 'partner_projects' %}
-        <div class="accordion-border key_0"><!-- 1 --><!-- css 1 -->
-            <div class="row middle-xs accordion-toggle">
+</section>
 
-                <div class="col-xs start-xs">Synergies pursued</div>
+<nav aria-label="Synergies sections" class="container tabs_container">
+    <div class="tabs" role="tablist">
+        <a href="#Sister-Projects"
+           role="tab"
+           aria-controls="Sister-Projects"
+           class="">Sister projects</a>
+        <a href="#Partnering-Projects"
+           role="tab"
+           aria-controls="Partnering-Projects"
+           class="">More partnering projects</a>
+    </div>
+</nav>
 
-                <div class="col-xs end-xs plusminus"><span class="plus"></span></div>
-            </div>
+<div class="container synergies_content_container">
+    <section id="Sister-Projects"
+             role="tabpanel"
+             aria-labelledby="sister-projects-heading">
+        <h2 id="sister-projects-heading" class="sr-only">Sister Projects</h2>
+        <div class="row">
+            {% component 'sister_projects' %}
 
-            <div class="row accordion-content" style="display: none;">
-                {% for record in research %}
-                <div class="col-md-4 col-xs-12">
-                    <div class="row start-md center-xs synergy_item">
+            <div class="accordion-border key_0">
+                <div
+                        class="row middle-xs accordion-toggle"
+                        aria-expanded="false"
+                        aria-controls="sister-projects-content"
+                        id="sister-projects-button">
+                        <div class="col-xs start-xs">About the projects</div>
+                        <div class="col-xs end-xs plusminus" aria-hidden="true">
+                            <span class="plus"></span>
+                        </div>
+                    </div>
+
+                <div class="row accordion-content"
+                     id="sister-projects-content"
+                     role="region"
+                     aria-labelledby="sister-projects-button"
+                     hidden>
+                    {% for record in outcomes %}
+                    <article class="col-md-4 col-xs-12">
+                        <div class="row start-md center-xs synergy_item middle-xs">
                             {% if record.logo %}
                             <div class="synergy-image">
-                                <img src="{{record.logo.path}}">
+                                <img src="{{record.logo.path}}" alt="{{record.name}} logo">
+                            </div>
+
+                            <nav class="social_media_links" aria-label="{{record.name}} links">
+                                {% if record.social_media %}
+                                {% for social_item in record.social_media %}
+                                <a href="{{social_item.link}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="p-{{social_item.media}} big"
+                                   aria-label="{{record.name}} on {{social_item.media}} (opens in new window)">
+                                    <span class="sr-only">{{social_item.media}}</span>
+                                </a>
+                                {% endfor %}
+                                {% endif %}
+
+                                {% if record.url %}
+                                <a href="{{record.url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="p-website"
+                                   aria-label="Visit {{record.name}} website (opens in new window)">
+                                    <span class="sr-only">Website</span>
+                                </a>
+                                {% endif %}
+                            </nav>
+                            {% endif %}
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Partnering-Projects"
+             role="tabpanel"
+             aria-labelledby="partnering-projects-heading">
+        <h2 id="partnering-projects-heading" class="sr-only">Partnering Projects</h2>
+        <div class="row">
+            {% component 'partner_projects' %}
+
+            <div class="accordion-border key_0">
+                <div
+                    class="row middle-xs accordion-toggle"
+                    aria-expanded="false"
+                    aria-controls="partnering-projects-content"
+                    id="partnering-projects-button">
+                    <div class="col-xs start-xs">Synergies pursued</div>
+                    <div class="col-xs end-xs plusminus" aria-hidden="true">
+                        <span class="plus"></span>
+                    </div>
+                </div>
+
+                <div class="row accordion-content"
+                     id="partnering-projects-content"
+                     role="region"
+                     aria-labelledby="partnering-projects-button"
+                     hidden>
+                    {% for record in research %}
+                    <article class="col-md-4 col-xs-12">
+                        <div class="row start-md center-xs synergy_item">
+                            {% if record.logo %}
+                            <div class="synergy-image">
+                                <img src="{{record.logo.path}}" alt="{{record.name}} logo">
                             </div>
                             {% endif %}
 
                             {% if record.url %}
-                             <a href="{{record.url}}" target="_blank" class="visit_website">Visit website</a>
+                            <a href="{{record.url}}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="visit_website"
+                               aria-label="Visit {{record.name}} website (opens in new window)">
+                                Visit website
+                            </a>
                             {% endif %}
-                    </div>
+                        </div>
+                    </article>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
-    </div>
+    </section>
 </div>
-
 
 <!-- News -->
 {% if related_news.count %}
-<!-- latest from news -->
-<div class="container-fluid synergies-news">
-    <div class="container">
-        <h1 class="display-1">News</h1>
-    </div>
+<section aria-labelledby="synergies-news-heading">
+    <div class="container-fluid synergies-news">
+        <div class="container">
+            <h2 class="display-1" id="synergies-news-heading">News</h2>
+        </div>
 
-    <div class="container prev-nex-container">
-        <div class="trigger_prev_arrow"></div>
-        <div class="trigger_next_arrow"></div>
-    </div>
+        <div class="container prev-nex-container">
+            <a class="trigger_prev_arrow"
+                    aria-label="Previous news"
+                    aria-controls="related-news-carousel">
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="trigger_next_arrow"
+                    aria-label="Next news"
+                    aria-controls="related-news-carousel">
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
 
-    <div class="trigger_prev"></div>
-    <div class="trigger_next"></div>
-
-    <div class="container synergies-news-slider-container">
-        <div class="related-news-carousel">
-            {% for highlight in related_news %}
-            <div class="home-news-synergies">
-                <div class="row news-item">
-                    <div class="col-md-12 col-xs-12 home-news-cover">
-                        <a href="/news/{{highlight.slug}}">
-                            <img src="{{ highlight.cover.path}}" alt="{{ highlight.title }}">
-                        </a>
+        <div class="container synergies-news-slider-container">
+            <div
+                id="related-news-carousel"
+                class="related-news-carousel"
+                role="region"
+                aria-label="Related news carousel"
+                aria-live="polite">
+                {% for highlight in related_news %}
+                <article class="home-news-synergies">
+                    <div class="row news-item">
+                        <div class="col-md-12 col-xs-12 home-news-cover">
+                            <a href="/news/{{highlight.slug}}"
+                               aria-label="Read article: {{highlight.title|striptags}}">
+                                <img src="{{ highlight.cover.path}}"
+                                     alt="{{highlight.title|striptags}}">
+                            </a>
+                        </div>
+                        <div class="col-md-12 col-xs-12 news-content">
+                            <h3 class="news-title">
+                                <a href="/news/{{highlight.slug}}">
+                                    {{ highlight.title|length > 100 ? highlight.title|slice(0, 100)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.title|replace({"&nbsp;": " ", ".": ". "}) }}
+                                </a>
+                            </h3>
+                            <time class="news-date" datetime="{{highlight.published_at|date('Y-m-d')}}">
+                                {{ highlight.published_at|date('d M Y') }}
+                            </time>
+                            <a href="/news/{{highlight.slug}}"
+                               class="read-more-link"
+                               aria-label="Read more about {{highlight.title|striptags}}">
+                                <div class="row read-more-row">
+                                    <div class="col-xs">
+                                        <div class="read-more">{{'Read more' |_}}</div>
+                                    </div>
+                                    <div class="col-xs end-xs">
+                                        <div class="read-more-arrow" aria-hidden="true"></div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-md-12 col-xs-12 news-content">
-                        <a href="/news/{{highlight.slug}}">
-                            <div class="news-title">{{ highlight.title|length > 100 ? highlight.title|slice(0, 100)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.title|replace({"&nbsp;": " ", ".": ". "})  }}</div></a>
-                        <p class="news-date">{{ highlight.published_at|date('d M Y') }}</p>
-                        <a href="/news/{{highlight.slug}}">
-                            <div class="row read-more-row">
-                                <div class="col-xs"><div class="read-more">{{'Read more' |_}}</div></div>
-                                <div class="col-xs end-xs"><div class="read-more-arrow"></div></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                </article>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
-
-</div>
-
+</section>
 {% endif %}

@@ -63,106 +63,137 @@ return Response::download($pathToFile, $fileName, $headers);
 }
 ?>
 ==
-<div class="container">
-    <h1 class="display-1">
-        <div class="go-back">
-            <a href="{{'media-center'|page}}" class="read-more-arrow"></a>
-        </div>
-        Brand kit</h1>
+<section aria-labelledby="brand-kit-heading">
+    <div class="container">
 
-    {% set records = mediaLogosList %}
-    {% set displayColumn = mediaLogosList.displayColumn %}
-    {% set noRecordsMessage = mediaLogosList.noRecordsMessage %}
-    {% set detailsPage = mediaLogosList.detailsPage %}
-    {% set detailsKeyColumn = mediaLogosList.detailsKeyColumn %}
-    {% set detailsUrlParameter = mediaLogosList.detailsUrlParameter %}
+        <h1 class="display-1" id="brand-kit-heading">
+            <div class="go-back" aria-label="Breadcrumb">
+                <a href="{{'media-center'|page}}" class="read-more-arrow"><span class="sr-only">Back to Media Center</span></a>
+            </div>
+            Brand kit</h1>
 
-    {% if records.count() %}
-    <div class="row">
-        <div class="col-md-12 col-xs-12">
-            <div class="row">
-                {% for record in records %}
-                {% spaceless %}
-                {% if record.logo_image %}
+        {% set records = mediaLogosList %}
+        {% set displayColumn = mediaLogosList.displayColumn %}
+        {% set noRecordsMessage = mediaLogosList.noRecordsMessage %}
+        {% set detailsPage = mediaLogosList.detailsPage %}
+        {% set detailsKeyColumn = mediaLogosList.detailsKeyColumn %}
+        {% set detailsUrlParameter = mediaLogosList.detailsUrlParameter %}
 
-                <div class="col-md-4 col-xs-12 mb-4">
-                    <div class="all_container">
-                        <div class="logo-container {{record.name}}">
-                            <img src="{{record.logo_image.path}}" title="{{record.name}}">
+        {% if records.count() %}
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div class="row">
+                    {% for record in records %}
+                    {% spaceless %}
+                    {% if record.logo_image %}
+
+                    <article class="col-md-4 col-xs-12 mb-4">
+                        <div class="all_container">
+                            <div class="logo-container {{record.name}}">
+                                <img src="{{record.logo_image.path}}" alt="{{record.name}} preview">
+                            </div>
+                            <h2>{{record.name}}</h2>
                         </div>
-                        <p>{{record.name}}</p>
-                    </div>
 
-                    {% if record.name == 'Logo Pack' %}
-                    {% set className = 'p-download' %}
-                    {% set labelJPG = 'JPG' %}
-                    {% set labelPNG = 'PNG' %}
-                    {% set labelSVG = 'SVG' %}
-                    {% set labelZIP = 'ZIP' %}
-                    {% set labelPDF = 'PDF' %}
-                    {% else %}
-                    {% set className = 'btn btn-secondary' %}
-                    {% set labelJPG = 'Download' %}
-                    {% set labelPNG = 'Download' %}
-                    {% set labelSVG = 'Download' %}
-                    {% set labelZIP = 'Download' %}
-                    {% set labelPDF = 'Download' %}
+                        {% if record.name == 'Logo Pack' %}
+                        {% set className = 'p-download' %}
+                        {% set labelJPG = 'JPG' %}
+                        {% set labelPNG = 'PNG' %}
+                        {% set labelSVG = 'SVG' %}
+                        {% set labelZIP = 'ZIP' %}
+                        {% set labelPDF = 'PDF' %}
+                        {% else %}
+                        {% set className = 'btn btn-secondary' %}
+                        {% set labelJPG = 'Download' %}
+                        {% set labelPNG = 'Download' %}
+                        {% set labelSVG = 'Download' %}
+                        {% set labelZIP = 'Download' %}
+                        {% set labelPDF = 'Download' %}
+                        {% endif %}
 
+                        <div class="links {{record.name|slug}}">
+                            {% if record.file_jpg %}
+                            <div class="form_container">
+                                {{form_open({ request: 'onDownloadFile' }) }}
+                                <input type="hidden" value="{{record.file_jpg.id}}" name="id">
+                                <button type="submit"
+                                        data-attach-loading
+                                        class="{{className}}"
+                                        aria-label="Download {{record.name}} as {{labelJPG}}">
+                                    {{labelJPG}}
+                                </button>
+                                {{ form_close() }}
+                            </div>
+                            {% endif %}
+
+                            {% if record.file_png %}
+                            <div class="form_container">
+                                {{form_open({ request: 'onDownloadFile' }) }}
+                                <input type="hidden" value="{{record.file_png.id}}" name="id">
+                                <button type="submit"
+                                        data-attach-loading
+                                        class="{{className}}"
+                                        aria-label="Download {{record.name}} as {{labelPNG}}">
+                                    {{labelPNG}}
+                                </button>
+                                {{ form_close() }}
+                            </div>
+                            {% endif %}
+
+                            {% if record.file_eps %}
+                            <div class="form_container">
+                                {{form_open({ request: 'onDownloadFile' }) }}
+                                <input type="hidden" value="{{record.file_eps.id}}" name="id">
+                                <button type="submit"
+                                        data-attach-loading
+                                        class="{{className}}"
+                                        aria-label="Download {{record.name}} as {{labelSVG}}">
+                                    {{labelSVG}}
+                                </button>
+                                {{ form_close() }}
+                            </div>
+                            {% endif %}
+
+                            {% if record.file_zip %}
+                            <div class="form_container">
+                                {{form_open({ request: 'onDownloadFile' }) }}
+                                <input type="hidden" value="{{record.file_zip.id}}" name="id">
+                                <button type="submit"
+                                        data-attach-loading
+                                        class="{{className}}"
+                                        aria-label="Download {{record.name}} as {{labelZIP}}">
+                                    {{labelZIP}}
+                                </button>
+                                {{ form_close() }}
+                            </div>
+                            {% endif %}
+
+                            {% if record.file_pdf %}
+                            <div class="form_container">
+                                <a href="{{record.file_pdf.path}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="{{className}}"
+                                   download
+                                   aria-label="Download {{record.name}} as PDF (opens in new window)">
+                                    {{labelPDF}}
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                    </article>
                     {% endif %}
-                    <div class="links {{record.name|slug}}">
-                        {% if record.file_jpg %}
-                        <div class="form_container">
-                            {{form_open({ request: 'onDownloadFile' }) }}
-                            <input type="hidden" value="{{record.file_jpg.id}}" name="id">
-                            <button type="submit" data-attach-loading class="{{className}}">{{labelJPG}}</button>
-                            {{ form_close() }}
-                        </div>
-                        {% endif %}
 
-                        {% if record.file_png %}
-                        <div class="form_container">
-                            {{form_open({ request: 'onDownloadFile' }) }}
-                            <input type="hidden" value="{{record.file_png.id}}" name="id">
-                            <button type="submit" data-attach-loading class="{{className}}">{{labelPNG}}</button>
-                            {{ form_close() }}
-                        </div>
-                        {% endif %}
-
-                        {% if record.file_eps %}
-                        <div class="form_container">
-                            {{form_open({ request: 'onDownloadFile' }) }}
-                            <input type="hidden" value="{{record.file_eps.id}}" name="id">
-                            <button type="submit" data-attach-loading class="{{className}}">{{labelSVG}}</button>
-                            {{ form_close() }}
-                        </div>
-                        {% endif %}
-
-                        {% if record.file_zip %}
-                        <div class="form_container">
-                            {{form_open({ request: 'onDownloadFile' }) }}
-                            <input type="hidden" value="{{record.file_zip.id}}" name="id">
-                            <button type="submit" data-attach-loading class="{{className}}">{{labelZIP}}</button>
-                            {{ form_close() }}
-                        </div>
-                        {% endif %}
-
-                        {% if record.file_pdf %}
-                        <div class="form_container">
-                            <a href="{{record.file_pdf.path}}" target="_blank" class="{{className}}">{{labelPDF}}</a>
-                        </div>
-                        {% endif %}
+                    {% endspaceless %}
+                    {% else %}
+                    <div class="col-xs-12">
+                        <p>{{ noRecordsMessage ?: 'No brand kit items available at this time.' }}</p>
                     </div>
-
+                    {% endfor %}
                 </div>
-                {% endif %}
-
-                {% endspaceless %}
-                {% else %}
-                {{ noRecordsMessage }}
-                {% endfor %}
             </div>
         </div>
-
+        {% endif %}
     </div>
-    {% endif %}
-</div>
+</section>

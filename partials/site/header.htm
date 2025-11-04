@@ -21,111 +21,192 @@ secondaryClasses = "dropdown-menu"
 numberOfLevels = 2
 ==
 {% if user %}
-<nav class="navbar-loggedin-user ">
+<nav class="navbar-loggedin-user" aria-label="User account navigation">
     <div class="navbar-collapse collapse row middle-xs">
         <div class="col-xs-12 col-md-9">{% component 'login' %}</div>
-        <div class="col-xs-2 end-xs  col-md-3 hidden-xs">
+        <div class="col-xs-2 end-xs col-md-3 hidden-xs">
             {% if user.avatar %}
-            <a href="/profile" class="profile_name"><span>{{ user.name }} {{ user.surname }} &nbsp; &nbsp; </span><img alt="{{ user.name }} {{ user.surname }}" src="{{user.avatar.getThumb(30,30, { mode : 'crop' } )}}" style="border-radius: 50%; margin-right:20px;" align="right"> </a>
+            <a href="/profile" class="profile_name" aria-label="View profile for {{ user.name }} {{ user.surname }}">
+                <span>{{ user.name }} {{ user.surname }}</span>
+                <img alt="" src="{{user.avatar.getThumb(30,30, { mode : 'crop' } )}}" style="border-radius: 50%; margin-right:20px;" align="right" role="presentation">
+            </a>
             {% else %}
-
-            <a href="/profile" class="profile_name"><span>{{ user.name }} {{ user.surname }} &nbsp; &nbsp; </span><img alt="{{ user.name }} {{ user.surname }}" src="{{ 'CMS_icons_avatar_white.svg'|media }}" width="30" height="30" style="margin-right:20px;" align="right"></a>
+            <a href="/profile" class="profile_name" aria-label="View profile for {{ user.name }} {{ user.surname }}">
+                <span>{{ user.name }} {{ user.surname }}</span>
+                <img alt="" src="{{ 'CMS_icons_avatar_white.svg'|media }}" width="30" height="30" style="margin-right:20px;" align="right" role="presentation">
+            </a>
             {% endif %}
         </div>
+    </div>
 </nav>
 {% endif %}
 
 <div class="container header-menu-container">
-    <nav class="navbar" id="headernavbar" {% if user %} {% endif %}>
-        <div id="menuToggle">
-            <input type="checkbox" />
-            <span></span>
-            <span></span>
-            <span></span>
-            {% component 'menu' %}
-        </div>
-        <a href="{{'home'|page}}" class="navbar-brand" style="background: url('{{ this.theme.site_logo.getPath() }}') center no-repeat; background-size: contain;">
+    <nav class="navbar" id="headernavbar" aria-label="Main navigation">
+        <a
+            id="menuToggle"
+            class="mobile-menu-toggle"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+            aria-label="Toggle navigation menu">
+            <span class="sr-only">Menu</span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
         </a>
-        <div class="navbar-collapse collapse end-xs" id="headerNavbarNav" style="display: none;">
+
+        <div id="mobileMenu" class="mobile-menu" hidden>
             {% component 'menu' %}
         </div>
+
+        <a href="{{'home'|page}}" class="navbar-brand" style="background: url('{{ this.theme.site_logo.getPath() }}') center no-repeat; background-size: contain;" aria-label="FERRO home">
+            <span class="sr-only">FERRO</span>
+        </a>
+
+        <div class="navbar-collapse collapse end-xs" id="headerNavbarNav">
+            {% component 'menu' %}
+        </div>
+
         <div class="search-and-social-media hidden-xs">
-            {% if this.theme.facebook_url %}
-            <a href="{{this.theme.facebook_url}}" target="_blank" class="pr p-secondary p-facebook normal" target="_blank"></a>
-            {% endif %}
-            {% if this.theme.twitter_url %}
-            <a href="{{this.theme.twitter_url}}" target="_blank" class="pr p-secondary p-twitter smaller" target="_blank"></a>
-            {% endif %}
-            {% if this.theme.linkedin_url %}
-            <a  href="{{this.theme.linkedin_url}}" target="_blank" class="pr p-secondary p-linkedin normal" target="_blank"></a>
-            {% endif %}
-            {% if this.theme.youtube_url %}
-            <a  href="{{this.theme.youtube_url}}" target="_blank" class="pr p-secondary p-youtube normal" target="_blank"></a>
-            {% endif %}
-            {% if this.theme.instagram_url %}
-            <a  href="{{this.theme.instagram_url}}" target="_blank" class="pr p-secondary p-instagram normal" target="_blank"></a>
-            {% endif %}
-            {% if this.theme.bluesky_url %}
-            <a href="{{this.theme.bluesky_url}}" target="_blank" class="pr p-secondary p-bluesky smaller"></a>
-            {% endif %}
-            {% if this.theme.threads_url %}
-            <a href="{{this.theme.threads_url}}" target="_blank" class="pr p-secondary p-threads smaller"></a>
-            {% endif %}
+            <nav aria-label="Social media links">
+                {% if this.theme.facebook_url %}
+                <a href="{{this.theme.facebook_url}}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="pr p-secondary p-facebook normal"
+                   aria-label="Follow us on Facebook (opens in new window)">
+                    <span class="sr-only">Facebook</span>
+                </a>
+                {% endif %}
+                {% if this.theme.twitter_url %}
+                <a href="{{this.theme.twitter_url}}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="pr p-secondary p-twitter smaller"
+                   aria-label="Follow us on Twitter (opens in new window)">
+                    <span class="sr-only">Twitter</span>
+                </a>
+                {% endif %}
+                {% if this.theme.linkedin_url %}
+                <a href="{{this.theme.linkedin_url}}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="pr p-secondary p-linkedin normal"
+                   aria-label="Follow us on LinkedIn (opens in new window)">
+                    <span class="sr-only">LinkedIn</span>
+                </a>
+                {% endif %}
+                {% if this.theme.youtube_url %}
+                <a href="{{this.theme.youtube_url}}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="pr p-secondary p-youtube normal"
+                   aria-label="Follow us on YouTube (opens in new window)">
+                    <span class="sr-only">YouTube</span>
+                </a>
+                {% endif %}
+                {% if this.theme.instagram_url %}
+                <a href="{{this.theme.instagram_url}}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="pr p-secondary p-instagram normal"
+                   aria-label="Follow us on Instagram (opens in new window)">
+                    <span class="sr-only">Instagram</span>
+                </a>
+                {% endif %}
+                {% if this.theme.bluesky_url %}
+                <a href="{{this.theme.bluesky_url}}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="pr p-secondary p-bluesky smaller"
+                   aria-label="Follow us on Bluesky (opens in new window)">
+                    <span class="sr-only">Bluesky</span>
+                </a>
+                {% endif %}
+                {% if this.theme.threads_url %}
+                <a href="{{this.theme.threads_url}}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="pr p-secondary p-threads smaller"
+                   aria-label="Follow us on Threads (opens in new window)">
+                    <span class="sr-only">Threads</span>
+                </a>
+                {% endif %}
+            </nav>
 
             <ul class="navbar-nav">
                 <li class="nav-item social">
-                    <a class="search-btn" onclick="showSearchForm();"></a>
+                    <a
+                        class="search-btn"
+                        aria-expanded="false"
+                        aria-controls="search"
+                        aria-label="Open search"
+                        onclick="showSearchForm();"
+                    >
+                        <span class="sr-only">Search</span>
+                    </a>
                 </li>
             </ul>
         </div>
-        <div id="search" class="search" style="display: none;">
+
+        <div id="search" class="search" role="search" hidden>
             <div class="container">
-                <div class="close-search" onclick="hideSearchForm();">&#10006;</div>
+                <a
+                    class="close-search"
+                    aria-label="Close search"
+                    onclick="hideSearchForm();"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </a>
                 <form class="input-group align-items-start" action="{{ url('search')}}" method="get">
-                    <input class="form-control search_input" style="color: #000;" name="q" type="text" autocomplete="on" placeholder="Search">
-                    <button class="btn pr p-search big header-text-grey-search-btn" type="submit"></button>
+                    <label for="search-input" class="sr-only">Search the site</label>
+                    <input
+                        id="search-input"
+                        class="form-control search_input"
+                        style="color: #000;"
+                        name="q"
+                        type="search"
+                        autocomplete="off"
+                        placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn pr p-search big header-text-grey-search-btn" type="submit" aria-label="Submit search">
+                        <span class="sr-only">Search</span>
+                    </button>
                 </form>
             </div>
         </div>
     </nav>
 </div>
 
-<!--{% if page_id != 'home' and page_id != 'search'%}-->
-<!--<div class="header-image {{page_id}}">-->
-<!--    <div class="container background-forest">-->
-<!--        <h1 class="underline">-->
-<!--            {%if page_title%} {{page_title}} {%else%} {{site_name}} {%endif%}-->
-<!--        </h1>-->
-<!--    </div>-->
-<!--</div>-->
-<!--{%endif%}-->
-
-{% if page_id == 'home' and tag_line%}
-<div class="header-image {{page_id}}">
+{% if page_id == 'home' and tag_line %}
+<section class="header-image {{page_id}}" aria-labelledby="hero-heading">
     <div class="container background-forest">
-        <div class="dron"></div>
-        <div class="icons_container">
-            <a href="" class="icon_satelite"></a>
-            <a href="" class="icon_dna"></a>
-            <a href="" class="icon_mailtrap"></a>
+        <div class="dron" aria-hidden="true"></div>
+        <div class="icons_container" role="img" aria-label="FERRO project methodology icons">
+            <span class="icon_satelite" aria-label="Remote Sensing"></span>
+            <span class="icon_dna" aria-label="Citizen Science"></span>
+            <span class="icon_mailtrap" aria-label="Ground Detection"></span>
         </div>
-        <div class="label_dna">Citizen Science</div>
-        <div class="label_dron">Ground Detection</div>
-        <div class="label_satelite">Remote Sensing</div>
+        <div class="label_dna" aria-hidden="true">Citizen Science</div>
+        <div class="label_dron" aria-hidden="true">Ground Detection</div>
+        <div class="label_satelite" aria-hidden="true">Remote Sensing</div>
+
         <div class="jumbotron" data-aos="fade-right">
             <div class="intro">
                 <p data-aos="fade-up" class="introducing">Introducing</p>
-                <h1 class="underline" data-aos="fade-up">{{tag_line|raw}}</h1>
-                <p data-aos="fade-up">{% component 'header_intro' %}</p>
-                <p><a href="{{'about'|page}}" class="btn btn-primary">Learn more</a> </p>
+                <h1 id="hero-heading" class="underline" data-aos="fade-up">{{tag_line|raw}}</h1>
+                <div data-aos="fade-up">{% component 'header_intro' %}</div>
+                <p><a href="{{'about'|page}}" class="btn btn-primary">Learn more</a></p>
                 <div class="home_video">
-                    <a href="{{'videos'|page}}" class="pulse" target="_blank"><span></span></a>
-                    <a href="{{'videos'|page}}" target="_blank">Introductory Video</a>
+                    <a href="{{'videos'|page}}" class="pulse" aria-label="Watch introductory video">
+                        <span aria-hidden="true"></span>
+                    </a>
+                    <a href="{{'videos'|page}}">Introductory Video</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 {% endif %}
 
 

@@ -777,11 +777,23 @@ ul.pagination{
         display: inline-flex;
         align-items: center;
         justify-content: start;
-        .social-networks{
-            .icons{
-                align-items: end;
-                justify-content: end;
 
+        h2{
+            font-size: 1.1em;
+            white-space: nowrap;
+            margin-bottom: 0;
+        }
+
+        .social-networks{
+
+
+            .icons{
+                //align-items: end;
+                //justify-content: end;
+
+                li{
+                    margin: 0;
+                }
                 a{
                     width: 40px;
                     height: 40px;
@@ -863,6 +875,7 @@ ul.pagination{
 
         .footer-menu-item{
             margin-bottom: 30px;
+            white-space: nowrap;
         }
     }
 
@@ -1178,4 +1191,18 @@ footer .align-items-center{
     to {
         fill: #60883C;
     }
+}
+
+
+/* Screen reader only text - visually hidden but accessible to screen readers */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
