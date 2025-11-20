@@ -230,6 +230,11 @@
         display: flex;
         align-items: center;
 
+        nav{
+            display: flex;
+            align-items: center;
+        }
+
         a{
             margin: 0 5px;
             &.p-bluesky{
@@ -247,7 +252,7 @@
             a{
                 border-radius: 25px;
                 color: white!important;
-                width: 45px;
+                white-space: nowrap;
                 height: 27px;
                 display: flex;
                 align-items: center;
@@ -495,16 +500,16 @@
 
 
 .full-width .close-search{
-    width: 29px;
-    height: 29px;
+    width: 49px;
+    height: 49px;
     position: fixed;
-    top: 30px;
+    top: 47px;
     right: 150px;
     cursor: pointer;
     color: @dark-color;
     background: @white-color;
     border-radius: 50%;
-    font-size: 15px;
+    font-size: 25px;
     font-weight: bold;
     text-align: center;
     line-height: 29px;
@@ -817,7 +822,7 @@
 
         .selected-language {
             display: flex;
-            width: 47px;
+            width: 50px;
             height: 43px;
             padding: 0 10px;
             //padding: 10px 11.559px 11px 11px;
@@ -939,15 +944,15 @@
             position: absolute;
             top: 100%;
             left: 0;
-            width: 100px;
+            width: 160px;
             //width: 98.6%;
             //max-height: 180px;
             overflow-y: auto;
-            background-color: #fff;
+            //background-color: #fff;
             z-index: 9999;
             margin-top: 5px;
             border-radius: 10px;
-            padding: 10px 12px;
+            //padding: 10px 12px;
 
             /* Enhanced scrollbar styling */
             &::-webkit-scrollbar {
