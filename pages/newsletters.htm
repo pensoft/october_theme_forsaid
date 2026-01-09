@@ -14,6 +14,16 @@ noRecordsMessage = "No records found"
 detailsPage = "-"
 detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
+
+[jumbotron]
+templates = "template3"
+description_limit = 0
+
+[jumbotron intro_text]
+jumbotron = "newsletters-intro"
+background = "transperant"
+templates = "template3"
+description_limit = 0
 ==
 <?php
 use Pensoft\Media\Models\Newsletters;
@@ -69,6 +79,9 @@ return Response::download($pathToFile, $fileName, $headers);
                 <a href="{{'media-center'|page}}" class="read-more-arrow"><span class="sr-only">Back to Media Center</span></a>
             </div>
             Newsletters</h1>
+
+
+            {% component 'intro_text' %}
 
         {% set records = mediaNewslettersList %}
         {% set displayColumn = mediaNewslettersList.displayColumn %}
