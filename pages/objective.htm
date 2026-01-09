@@ -17,6 +17,31 @@ title = 1
 background = "transperant"
 templates = "template3"
 description_limit = 0
+
+[jumbotron target]
+jumbotron = "target-species-forsaid"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron insects]
+jumbotron = "insects"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron fungi]
+jumbotron = "fungi"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron nematode]
+jumbotron = "nematode"
+background = "transperant"
+templates = "template3"
+description_limit = 0
 ==
 {% component 'siteSearchInclude' %}
 
@@ -38,5 +63,35 @@ description_limit = 0
     <div class="container forsaid_will">
         <h2 id="forsaid-will-heading" class="sr-only">What FORSAID Will Do</h2>
         {% component 'will' %}
+    </div>
+</section>
+
+
+<section aria-labelledby="target-species-of-forsaid-heading">
+    <h2 id="target-species-of-forsaid-heading" class="sr-only">Target species of FORSAID</h2>
+    <div class="container forsaid_target_species">
+        {% component 'target' %}
+    </div>
+    <div class="container forsaid_target_species_tabs">
+        <div class="tabs">
+            <a class="" href="#Insects">Insects</a>
+            <a class="" href="#Fungi">Fungi</a>
+            <a class="" href="#Nematode">Nematode</a>
+        </div>
+    </div>
+
+    <div class="container forsaid_target_species_content">
+        <div id="Insects">
+            {% component 'insects' %}
+
+        </div>
+
+        <div id="Fungi">
+            {% component 'fungi' %}
+        </div>
+
+        <div id="Nematode">
+            {% component 'nematode' %}
+        </div>
     </div>
 </section>

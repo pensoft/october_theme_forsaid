@@ -411,7 +411,7 @@ $(document).ready(function() {
     });
 
 
-    $('.synergies .tabs').each(function(){
+    $('.synergies .tabs, .objective .tabs').each(function(){
         // For each set of tabs, we want to keep track of
         // which tab is active and its associated content
         var $active, $content, $links = $(this).find('a');
@@ -422,6 +422,9 @@ $(document).ready(function() {
         $active = $($links.filter("[href=\'"+location.hash+"\']")[0] || $links[0]);
 
         if($(this).parent().parent().hasClass('synergies')){
+            $active.addClass('active');
+        }
+        if($(this).parent().parent().hasClass('objective')){
             $active.addClass('active');
         }
 
