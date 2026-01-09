@@ -424,7 +424,7 @@ $(document).ready(function() {
         if($(this).parent().parent().hasClass('synergies')){
             $active.addClass('active');
         }
-        if($(this).parent().parent().hasClass('objective')){
+        if($(this).parent().parent().hasClass('forsaid_target_species_tabs')){
             $active.addClass('active');
         }
 
