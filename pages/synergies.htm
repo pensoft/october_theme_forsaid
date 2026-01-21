@@ -38,7 +38,7 @@ use Carbon\Carbon;
 function onStart(){
     $this['research'] = Synergy::where('type', 1)->get();
     $this['outcomes'] = Synergy::where('type', 2)->get();
-    $this['related_news'] = Article::whereRaw(' id in (SELECT distinct(article_id) FROM pensoft_synergies_articles)')->get();
+    $this['related_news'] = Article::whereRaw(' id in (SELECT distinct(article_id) FROM pensoft_synergies_articles)')->orderBy('published_at', 'desc')->get();
 }
 ?>
 ==
