@@ -70,7 +70,6 @@ return Response::download($pathToFile, $fileName, $headers);
 }
 ?>
 ==
-
 {% set records = mediaVideosList %}
 
 <section aria-labelledby="videos-heading">
@@ -87,7 +86,7 @@ return Response::download($pathToFile, $fileName, $headers);
             <div class="col-md-12 col-xs-12">
                 <div class="row">
                     {% for record in records %}
-                    <article class="col-md-6 col-xs-12">
+                    <article class="col-md-6 col-xs-12 mb-2">
                         {% if record.youtube_url %}
                         <iframe
                             src="{{record.youtube_url}}"
