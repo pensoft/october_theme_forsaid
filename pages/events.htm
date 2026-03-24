@@ -66,7 +66,6 @@ $this['slug'] = $this->param('slug');
 }
 ?>
 ==
-
 {% if not slug %}
 
 <section aria-labelledby="events-heading">
@@ -89,14 +88,8 @@ $this['slug'] = $this->param('slug');
                         </div>
 
                         <div class="col-md-9 col-xs-12">
-                            {% if entry.cover_image %}
-                            <a href="{{'events'|page}}/{{entry.slug}}"
-                               aria-label="View {{entry.title|striptags}} event details">
-                                <img src="{{entry.cover_image.getThumb(auto, auto, {'mode': 'crop'})}}"
-                                     alt="{{entry.title|striptags}}">
-                            </a>
-                            {% endif %}
-
+                            
+                            <div class="place">{{entry.place}}</div>
                             <h2>
                                 <a href="{{'events'|page}}/{{entry.slug}}" class="date_week">
                                     {{entry.title|raw}}
@@ -139,13 +132,7 @@ $this['slug'] = $this->param('slug');
                             </div>
 
                             <div class="col-md-9 col-xs-12">
-                                {% if entry.cover_image %}
-                                <a href="{{'events'|page}}/{{entry.slug}}"
-                                   aria-label="View {{entry.title|striptags}} event details">
-                                    <img src="{{entry.cover_image.getThumb(auto, auto, {'mode': 'crop'})}}"
-                                         alt="{{entry.title|striptags}}">
-                                </a>
-                                {% endif %}
+                               <div class="place">{{entry.place}}</div>
 
                                 <h3>
                                     <a href="{{'events'|page}}/{{entry.slug}}" class="date_week">
