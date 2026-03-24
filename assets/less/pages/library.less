@@ -254,6 +254,91 @@
             align-items: center;
         });
     }
+
+
+    .zenodo_banner {
+        width: 100%;
+        height: 235px;
+        border-radius: 20px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        position: relative;
+        overflow: hidden;
+
+        // ── Background image ────────────────────────────
+        background: url('../../assets/images/zenodo banner_background_image.png') center center no-repeat;
+        background-size: cover;
+
+        .breakpoint-large-down({
+            height: auto;
+            padding: 40px 24px;
+        });
+
+        &__text {
+            color: #ffffff;
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 105%;
+            letter-spacing: 0.96px;
+            text-align: center;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+
+            .breakpoint-large-down({
+                font-size: 16px;
+            });
+        }
+
+        &__btn {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 28px;
+            background: #FBFFFB;
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.15);
+            transition: background 0.3s ease, border-color 0.3s ease;
+
+            img {
+                height: 28px;
+                width: auto;
+                display: block;
+                transition: opacity 0.3s ease;
+            }
+
+            .zenodo_banner__logo--green {
+                opacity: 1;
+                position: relative;
+            }
+
+            .zenodo_banner__logo--white {
+                opacity: 0;
+                position: absolute;
+            }
+
+            &:hover {
+                background: #60883C;
+                border-color: #60883C;
+
+                .zenodo_banner__logo--green {
+                    opacity: 0;
+                }
+
+                .zenodo_banner__logo--white {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
 }
 
 .libraryForm {

@@ -16,5 +16,14 @@ features_filter = 0
 ==
 <div class="container mb-2" style="padding-top: 50px;">
         <h1 class="display-1">Library</h1>
+        <div class="zenodo_banner">
+            <p class="zenodo_banner__text">
+                Discover FORSAID's results in the project's community on Zenodo!
+            </p>
+            <a href="https://zenodo.org/communities/forsaid/records?q=&l=list&p=1&s=10" target="_blank" class="zenodo_banner__btn">
+                <img src="{{ 'zenodo_logo_green.svg' | media }}" alt="Zenodo" class="zenodo_banner__logo--green" />
+                <img src="{{ 'zenodo_logo_white.svg' | media }}" alt="Zenodo" class="zenodo_banner__logo--white" />
+            </a>
+        </div>
         {% component 'LibraryPage' %}
     </div>
