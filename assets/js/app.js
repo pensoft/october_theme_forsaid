@@ -634,10 +634,17 @@ function hideSearchForm(){
 }
 
 function requestFormLibrary() {
+	renameLibraryTabs();
 	$('#mylibraryForm').on('click', 'a', function () {
 		var $form = $(this).closest('form');
 		$form.request();
 	})
+}
+
+function renameLibraryTabs() {
+	$('#mylibraryForm a[data-type="2"]').text('Relevant Reading');
+	$('#mylibraryForm a[data-type="3"]').text('Scientific Publications');
+	$('#mylibraryForm a[data-type="6"]').text('Policy Briefs');
 }
 
 function requestFormPartners() {
