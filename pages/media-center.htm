@@ -12,6 +12,7 @@ use Pensoft\Media\Models\Newsletters;
 use Pensoft\Media\Models\Presentations;
 use Pensoft\Media\Models\Pressreleases;
 use Pensoft\Media\Models\Videos;
+use Pensoft\Media\Models\Podcasts;
 
 function onStart(){
 	$this['logos'] =  MediaLogos::get();
@@ -20,6 +21,7 @@ function onStart(){
 	$this['presentations'] =  Presentations::get();
 	$this['pressreleases'] =  Pressreleases::get();
 	$this['videos'] =  Videos::get();
+	$this['podcasts'] =  Podcasts::get();
 }
 ?>
 ==
@@ -113,6 +115,24 @@ function onStart(){
                             </div>
                             <div class="label_and_link">
                                 <span class="media_label">Videos</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if podcasts.count() %}
+                <div class="col-sm-4 col-xs-12 media_item podcasts_item">
+                    <div class="card-container">
+                        <a href="{{url('media-center')}}/podcasts"
+                           aria-label="Watch project podcasts and multimedia content">
+                            <div class="card_image_container">
+                                <div class="card_bg">
+                                    <span class="card_icon" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="label_and_link">
+                                <span class="media_label">Podcasts</span>
                             </div>
                         </a>
                     </div>
