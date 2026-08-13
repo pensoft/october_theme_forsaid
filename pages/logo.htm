@@ -114,68 +114,54 @@ return Response::download($pathToFile, $fileName, $headers);
                         <div class="links {{record.name|slug}}">
                             {% if record.file_jpg %}
                             <div class="form_container">
-                                {{form_open({ request: 'onDownloadFile' }) }}
-                                <input type="hidden" value="{{record.file_jpg.id}}" name="id">
-                                <button type="submit"
-                                        data-attach-loading
-                                        class="{{className}}"
-                                        aria-label="Download {{record.name}} as {{labelJPG}}">
+                                <a href="{{record.file_jpg.path}}"
+                                   class="{{className}} matomo_download piwik_download"
+                                   download="{{record.file_jpg.file_name}}"
+                                   aria-label="Download {{record.name}} as {{labelJPG}}">
                                     {{labelJPG}}
-                                </button>
-                                {{ form_close() }}
+                                </a>
                             </div>
                             {% endif %}
 
                             {% if record.file_png %}
                             <div class="form_container">
-                                {{form_open({ request: 'onDownloadFile' }) }}
-                                <input type="hidden" value="{{record.file_png.id}}" name="id">
-                                <button type="submit"
-                                        data-attach-loading
-                                        class="{{className}}"
-                                        aria-label="Download {{record.name}} as {{labelPNG}}">
+                                <a href="{{record.file_png.path}}"
+                                   class="{{className}} matomo_download piwik_download"
+                                   download="{{record.file_png.file_name}}"
+                                   aria-label="Download {{record.name}} as {{labelPNG}}">
                                     {{labelPNG}}
-                                </button>
-                                {{ form_close() }}
+                                </a>
                             </div>
                             {% endif %}
 
                             {% if record.file_eps %}
                             <div class="form_container">
-                                {{form_open({ request: 'onDownloadFile' }) }}
-                                <input type="hidden" value="{{record.file_eps.id}}" name="id">
-                                <button type="submit"
-                                        data-attach-loading
-                                        class="{{className}}"
-                                        aria-label="Download {{record.name}} as {{labelSVG}}">
+                                <a href="{{record.file_eps.path}}"
+                                   class="{{className}} matomo_download piwik_download"
+                                   download="{{record.file_eps.file_name}}"
+                                   aria-label="Download {{record.name}} as {{labelSVG}}">
                                     {{labelSVG}}
-                                </button>
-                                {{ form_close() }}
+                                </a>
                             </div>
                             {% endif %}
 
                             {% if record.file_zip %}
                             <div class="form_container">
-                                {{form_open({ request: 'onDownloadFile' }) }}
-                                <input type="hidden" value="{{record.file_zip.id}}" name="id">
-                                <button type="submit"
-                                        data-attach-loading
-                                        class="{{className}}"
-                                        aria-label="Download {{record.name}} as {{labelZIP}}">
+                                <a href="{{record.file_zip.path}}"
+                                   class="{{className}} matomo_download piwik_download"
+                                   download="{{record.file_zip.file_name}}"
+                                   aria-label="Download {{record.name}} as {{labelZIP}}">
                                     {{labelZIP}}
-                                </button>
-                                {{ form_close() }}
+                                </a>
                             </div>
                             {% endif %}
 
                             {% if record.file_pdf %}
                             <div class="form_container">
                                 <a href="{{record.file_pdf.path}}"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="{{className}}"
-                                   download
-                                   aria-label="Download {{record.name}} as PDF (opens in new window)">
+                                   class="{{className}} matomo_download piwik_download"
+                                   download="{{record.file_pdf.file_name}}"
+                                   aria-label="Download {{record.name}} as PDF">
                                     {{labelPDF}}
                                 </a>
                             </div>
