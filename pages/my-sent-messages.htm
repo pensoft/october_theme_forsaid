@@ -54,7 +54,7 @@ function onStart(){
                         <h2>Attachment(s):</h2>
                         <ul>
                             {% for attachment in record.attachments %}
-                            <li><a  href="{{attachment.path}}" target="_blank">{{attachment.file_name}}</a></li>
+                            <li><a href="{{ url('download/' ~ attachment.id ~ '/' ~ attachment.file_name|url_encode) }}" download="{{attachment.file_name}}">{{attachment.file_name}}</a></li>
                             {% endfor %}
                         </ul>
                     </div>

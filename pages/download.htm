@@ -1,0 +1,80 @@
+title = "Download"
+url = "/download/:id|^[0-9]+$/:filename?"
+is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
+==
+<?php
+use System\Models\File;
+use Pensoft\Mailing\Models\Mails;
+use RainLab\User\Facades\Auth;
+
+/**
+ * Streams an attachment behind a URL that ends with its original file name, eg.
+ * /download/412/FORSAID_Newsletter_Issue_1.pdf. The file is resolved by id only,
+ * the last segment is cosmetic - it is there so Matomo reports the real file
+ * name instead of the hashed disk name that storage/app/uploads uses.
+ *
+ * No layout is attached on purpose, the response never renders any markup.
+ */
+function onStart()
+{
+	$file = File::find((int) $this->param('id'));
+
+	if (!$file || !$this->isDownloadable($file)) {
+		abort(404);
+	}
+
+	$localPath = $file->getLocalPath();
+
+	if (!file_exists($localPath)) {
+		abort(404);
+	}
+
+	$response = Response::download($localPath, $file->file_name, [
+		'Content-Type' => $file->getContentType(),
+	]);
+
+	// Response::download marks everything public, mail attachments are not.
+	if ($file->attachment_type === Mails::class) {
+		$response->setPrivate();
+	}
+
+	return $response;
+}
+
+/**
+ * isDownloadable limits the route to attachments that are already reachable from
+ * the front end, so it cannot be used to walk the whole system_files table.
+ */
+function isDownloadable($file)
+{
+	$publicTypes = [
+		'Pensoft\Media\Models\MediaLogos',
+		'Pensoft\Media\Models\Flyers',
+		'Pensoft\Media\Models\Newsletters',
+		'Pensoft\Media\Models\Podcasts',
+		'Pensoft\Media\Models\Videos',
+		'Pensoft\Media\Models\Graphic',
+		'Pensoft\Media\Models\Presentations',
+		'Pensoft\Media\Models\Pressreleases',
+		'Pensoft\Library\Models\Library',
+	];
+
+	if (in_array($file->attachment_type, $publicTypes)) {
+		return true;
+	}
+
+	// Mail attachments are private - only the sender may download their own.
+	if ($file->attachment_type === Mails::class) {
+		$user = Auth::getUser();
+
+		return $user && Mails::where('id', $file->attachment_id)
+			->where('from_user', $user->id)
+			->exists();
+	}
+
+	return false;
+}
+?>
+==

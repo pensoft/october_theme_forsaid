@@ -54,7 +54,9 @@ return Redirect::to('/media-center/policy-briefs');
                 <span class="card_title">{{record.name}}</span><br>
                 <span class="card_image_container" style="background: url({{record.image.thumb(220, 220,{'mode':'crop'})}}) center center no-repeat;" title="{{record.name}}"></span>
 
-                <br><a href="{{ record.file.path }}#{{record.file.file_name}}" target="_blank" title="{{record.name}}" class="btn btn-primary">Download</a>
+                {% if record.file %}
+                <br><a href="{{ url('download/' ~ record.file.id ~ '/' ~ record.file.file_name|url_encode) }}" title="{{record.name}}" class="btn btn-primary matomo_download piwik_download" download="{{record.file.file_name}}">Download</a>
+                {% endif %}
             </div>
         </div>
 

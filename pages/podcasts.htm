@@ -111,10 +111,10 @@ return Response::download($pathToFile, $fileName, $headers);
 
                         {% if record.file %}
                         <div class="links">
-                            <a class="btn btn-secondary"
-                               href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.title|replace({' ': '_'})}}"
+                            <a class="btn btn-secondary matomo_download piwik_download"
+                               href="{{ url('download/' ~ record.file.id ~ '/' ~ record.file.file_name|url_encode) }}"
                                aria-label="Download {{record.title|striptags}} podcast"
-                               download>
+                               download="{{record.file.file_name}}">
                                 Download
                             </a>
                         </div>

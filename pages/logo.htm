@@ -114,7 +114,7 @@ return Response::download($pathToFile, $fileName, $headers);
                         <div class="links {{record.name|slug}}">
                             {% if record.file_jpg %}
                             <div class="form_container">
-                                <a href="{{record.file_jpg.path}}"
+                                <a href="{{ url('download/' ~ record.file_jpg.id ~ '/' ~ record.file_jpg.file_name|url_encode) }}"
                                    class="{{className}} matomo_download piwik_download"
                                    download="{{record.file_jpg.file_name}}"
                                    aria-label="Download {{record.name}} as {{labelJPG}}">
@@ -125,7 +125,7 @@ return Response::download($pathToFile, $fileName, $headers);
 
                             {% if record.file_png %}
                             <div class="form_container">
-                                <a href="{{record.file_png.path}}"
+                                <a href="{{ url('download/' ~ record.file_png.id ~ '/' ~ record.file_png.file_name|url_encode) }}"
                                    class="{{className}} matomo_download piwik_download"
                                    download="{{record.file_png.file_name}}"
                                    aria-label="Download {{record.name}} as {{labelPNG}}">
@@ -136,7 +136,7 @@ return Response::download($pathToFile, $fileName, $headers);
 
                             {% if record.file_eps %}
                             <div class="form_container">
-                                <a href="{{record.file_eps.path}}"
+                                <a href="{{ url('download/' ~ record.file_eps.id ~ '/' ~ record.file_eps.file_name|url_encode) }}"
                                    class="{{className}} matomo_download piwik_download"
                                    download="{{record.file_eps.file_name}}"
                                    aria-label="Download {{record.name}} as {{labelSVG}}">
@@ -147,7 +147,7 @@ return Response::download($pathToFile, $fileName, $headers);
 
                             {% if record.file_zip %}
                             <div class="form_container">
-                                <a href="{{record.file_zip.path}}"
+                                <a href="{{ url('download/' ~ record.file_zip.id ~ '/' ~ record.file_zip.file_name|url_encode) }}"
                                    class="{{className}} matomo_download piwik_download"
                                    download="{{record.file_zip.file_name}}"
                                    aria-label="Download {{record.name}} as {{labelZIP}}">
@@ -158,7 +158,7 @@ return Response::download($pathToFile, $fileName, $headers);
 
                             {% if record.file_pdf %}
                             <div class="form_container">
-                                <a href="{{record.file_pdf.path}}"
+                                <a href="{{ url('download/' ~ record.file_pdf.id ~ '/' ~ record.file_pdf.file_name|url_encode) }}"
                                    class="{{className}} matomo_download piwik_download"
                                    download="{{record.file_pdf.file_name}}"
                                    aria-label="Download {{record.name}} as PDF">

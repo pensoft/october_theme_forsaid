@@ -117,7 +117,7 @@ return Response::download($pathToFile, $fileName, $headers);
                             {% endif %}
 
                             {% if record.file %}
-                            <a href="{{record.file.path}}"
+                            <a href="{{ url('download/' ~ record.file.id ~ '/' ~ record.file.file_name|url_encode) }}"
                                class="btn btn-secondary matomo_download piwik_download"
                                download="{{record.file.file_name}}"
                                aria-label="Download {{record.name}} newsletter">
