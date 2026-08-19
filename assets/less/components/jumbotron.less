@@ -834,6 +834,14 @@
         display: inline-flex;
         flex-direction: row;
         flex-wrap: nowrap;
+
+        /* nowrap forced the col-xs-12 cards to 200% width on phones, which widened
+           the whole document and pushed every section off-centre — wrap instead */
+        .breakpoint-large-down({
+            flex-wrap: wrap;
+            justify-content: center;
+        });
+
         .synergy_item{
             padding: 0;
             margin: 20px 0;
@@ -968,7 +976,7 @@
     box-sizing: border-box;
     flex: 0 0 100%;
     width: 100%;
-    min-width: 0; /* let the card shrink inside .row instead of being pushed out by the 423px stage */
+    min-width: 0; /* let the card shrink inside .row instead of being pushed out by the image */
     margin: 40px 0 0 0;
     padding: 57px 40px;
     border-radius: 17px;
@@ -986,46 +994,25 @@
         padding: 40px 20px;
     });
 
-    /* left column: the two overlapping factsheet pages.
-       Box is 423x486 in the design; each exported PNG already carries its
-       drop shadow, so the page boxes are 289.25x403.93 (276.25x390.93 + 6.5px bleed). */
+    /* left column: one flattened composite of both factsheet pages (437x504),
+       shadow already baked into the PNG */
     .joint-factsheet-visual{
         box-sizing: border-box;
-        flex: 0 0 auto;
-        width: 423px;
+        flex: 0 1 437px;
+        width: 437px;
         max-width: 100%;
         min-width: 0;
 
         .breakpoint-large-down({
             width: 100%;
-            max-width: 423px;
+            max-width: 437px;
         });
 
-        /* .jf-stage carries the aspect ratio: percentage padding resolves against
-           .joint-factsheet-visual's width (423px), not the card's. */
-        .jf-stage{
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 114.894%; /* 486 / 423 */
-        }
-
-        .jf-page{
-            position: absolute;
+        .jf-image{
             display: block;
-            width: 68.381%;  /* 289.25 / 423 */
+            width: 100%;
             height: auto;
-            max-width: none;
-        }
-
-        .jf-page-back{
-            left: -1.537%;   /* -6.5 / 423 */
-            top: -2.366%;    /* -11.5 / 486 */
-        }
-
-        .jf-page-front{
-            left: 33.215%;   /* 140.5 / 423 */
-            top: 18.210%;    /* 88.5 / 486 */
+            max-width: 100%;
         }
     }
 
