@@ -226,42 +226,13 @@
 
 
 
-    /* right-hand group: social + search + Log In pill */
+    /* right-hand group: search + Log In pill */
     .header-actions{
         min-width: fit-content;
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 13px;
-
-        .header-social{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 10px;
-            margin-right: 4px;
-
-            a{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 22px;
-                height: 22px;
-                margin: 0;
-                font-size: 18px;
-                line-height: 1;
-                color: #FBFFFB!important;
-
-                &:hover{
-                    color: @link-color!important;
-                    opacity: 1;
-                }
-
-                &.p-twitter, &.p-bluesky, &.p-threads{
-                    font-size: 15px;
-                }
-            }
-        }
 
         .search-btn{
             flex: 0 0 24px;

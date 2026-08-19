@@ -98,35 +98,21 @@ function onStart(){
                      >
                     {% for record in outcomes %}
                     <article class="col-md-4 col-xs-12">
-                        <div class="row start-md center-xs synergy_item middle-xs">
+                        <div class="row start-md center-xs synergy_item">
                             {% if record.logo %}
                             <div class="synergy-image">
                                 <img src="{{record.logo.path}}" alt="{{record.name}} logo">
                             </div>
+                            {% endif %}
 
-                            <nav class="social_media_links" aria-label="{{record.name}} links">
-                                {% if record.social_media %}
-                                {% for social_item in record.social_media %}
-                                <a href="{{social_item.link}}"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="p-{{social_item.media}} big"
-                                   aria-label="{{record.name}} on {{social_item.media}} (opens in new window)">
-                                    <span class="sr-only">{{social_item.media}}</span>
-                                </a>
-                                {% endfor %}
-                                {% endif %}
-
-                                {% if record.url %}
-                                <a href="{{record.url}}"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="p-website"
-                                   aria-label="Visit {{record.name}} website (opens in new window)">
-                                    <span class="sr-only">Website</span>
-                                </a>
-                                {% endif %}
-                            </nav>
+                            {% if record.url %}
+                            <a href="{{record.url}}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="visit_website"
+                               aria-label="Visit {{record.name}} website (opens in new window)">
+                                Visit website
+                            </a>
                             {% endif %}
                         </div>
                     </article>
