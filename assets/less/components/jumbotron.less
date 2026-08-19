@@ -411,7 +411,11 @@
         font-weight: 500;
         line-height: 145%; /* 31.9px */
 
-        h1{
+        /* the jumbotron banner title is an <h2> (page-outline fix in template3).
+           .container here is display:flex, so the heading needs width:100% —
+           otherwise it shrink-to-fits and text-align:center has nothing to centre in. */
+        h1, h2{
+            width: 100%;
             text-align: center;
             margin-bottom: 40px;
         }
@@ -572,7 +576,7 @@
             height: 130%;
             width: 100%;
             left: 0;
-            top: -30%;
+            top: -15%;
         }
 
         .breakpoint-large-down({
@@ -583,6 +587,41 @@
 
     .objectives_first_container{
 
+    }
+
+    /* ---- 55px between the page's top-level sections ----
+       The gap is built from padding, not margins: each page .container carries
+       50px top/bottom, and the jumbotron nests a *second* .container inside it
+       with another 50px. That produced uneven 150px / 240px gaps, so the
+       boundary padding is stripped and one explicit 55px margin replaces it. */
+    > section + section{
+        margin-top: 55px;
+    }
+
+    > section{
+        > .container:first-of-type{
+            padding-top: 0;
+
+            .container-fluid.banner > .container{
+                padding-top: 0;
+            }
+        }
+
+        > .container:last-of-type{
+            padding-bottom: 0;
+
+            .container-fluid.banner > .container{
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    /* keep the page breathing against the header and the footer */
+    > section:first-of-type > .container:first-of-type{
+        padding-top: 50px;
+    }
+    > section:last-of-type > .container:last-of-type{
+        padding-bottom: 50px;
     }
 
     .forsaid_will{
@@ -912,6 +951,136 @@
         }
     }
 
+
+}
+
+/*------------------------*/
+/*    joint factsheet     */
+/*------------------------*/
+
+.joint-factsheet{
+    box-sizing: border-box;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0; /* let the card shrink inside .row instead of being pushed out by the 423px stage */
+    margin: 40px 0 0 0;
+    padding: 57px 40px;
+    border-radius: 17px;
+    background: #E9F5E9;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+
+    .breakpoint-large-down({
+        flex-direction: column;
+        gap: 40px;
+        padding: 40px 20px;
+    });
+
+    /* left column: the two overlapping factsheet pages.
+       Box is 423x486 in the design; each exported PNG already carries its
+       drop shadow, so the page boxes are 289.25x403.93 (276.25x390.93 + 6.5px bleed). */
+    .joint-factsheet-visual{
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        width: 423px;
+        max-width: 100%;
+        min-width: 0;
+
+        .breakpoint-large-down({
+            width: 100%;
+            max-width: 423px;
+        });
+
+        /* .jf-stage carries the aspect ratio: percentage padding resolves against
+           .joint-factsheet-visual's width (423px), not the card's. */
+        .jf-stage{
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 114.894%; /* 486 / 423 */
+        }
+
+        .jf-page{
+            position: absolute;
+            display: block;
+            width: 68.381%;  /* 289.25 / 423 */
+            height: auto;
+            max-width: none;
+        }
+
+        .jf-page-back{
+            left: -1.537%;   /* -6.5 / 423 */
+            top: -2.366%;    /* -11.5 / 486 */
+        }
+
+        .jf-page-front{
+            left: 33.215%;   /* 140.5 / 423 */
+            top: 18.210%;    /* 88.5 / 486 */
+        }
+    }
+
+    .joint-factsheet-body{
+        flex: 0 1 auto;
+        min-width: 0;
+        max-width: 459px;
+        text-align: left;
+
+        .breakpoint-large-down({
+            max-width: 100%;
+            text-align: center;
+        });
+    }
+
+    .joint-factsheet-title{
+        margin: 0 0 20px 0;
+        color: @text-color-default;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 145%; /* 52.2px */
+        letter-spacing: 0.72px;
+
+        .breakpoint-large-down({
+            font-size: 28px;
+        });
+    }
+
+    .joint-factsheet-text{
+        margin: 0;
+        color: @text-color-default;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 145%; /* 26.1px */
+    }
+
+    .joint-factsheet-link{
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        margin-top: 35px;
+        padding: 8px 16px;
+        border-radius: 46.6px;
+        background: #80A942;
+        color: #FBFFFB;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 145%; /* 23.2px */
+        white-space: nowrap;
+        text-decoration: none;
+
+        &:hover, &:focus, &.active{
+            text-decoration: none;
+            background: #60883C;
+            color: #FBFFFB;
+        }
+    }
 }
 
 .forsaid_target_species_tabs{

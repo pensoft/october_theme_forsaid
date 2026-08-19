@@ -561,7 +561,7 @@ function toggleExpandReadMore(el){
 
 function onHashChange(){
 	$("g").removeClass('active_path');
-	$(".accordion-content").hide();
+	// $(".accordion-content").hide();
 	var caseStudiesHashTitle = location.hash;
 
 	if(caseStudiesHashTitle){
@@ -587,9 +587,8 @@ function appendProfile() {
 }
 function appendSignIn(){
     $(document).on('signin', function (e) {
-        var headerNavbarLogin = $('#headernavbar');
         var li = '<div class="sign-in"><a href="/login" target = "_self">Login</a></div>';
-		headerNavbarLogin.find('.search-and-social-media').append(li);
+		// desktop Log In is rendered by partials/site/header.htm now; mobile still needs it appended
 		var menu = $('#menuToggle');
 		menu.find('>ul').append(li);
     });

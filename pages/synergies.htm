@@ -80,22 +80,22 @@ function onStart(){
             {% component 'sister_projects' %}
 
             <div class="accordion-border key_0">
-                <div
-                        class="row middle-xs accordion-toggle"
-                        aria-expanded="false"
-                        aria-controls="sister-projects-content"
-                        id="sister-projects-button">
-                        <div class="col-xs start-xs">About the projects</div>
-                        <div class="col-xs end-xs plusminus" aria-hidden="true">
-                            <span class="plus"></span>
-                        </div>
-                    </div>
+<!--                <div-->
+<!--                        class="row middle-xs accordion-toggle"-->
+<!--                        aria-expanded="false"-->
+<!--                        aria-controls="sister-projects-content"-->
+<!--                        id="sister-projects-button">-->
+<!--                        <div class="col-xs start-xs">About the projects</div>-->
+<!--                        <div class="col-xs end-xs plusminus" aria-hidden="true">-->
+<!--                            <span class="plus"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                 <div class="row accordion-content"
                      id="sister-projects-content"
                      role="region"
                      aria-labelledby="sister-projects-button"
-                     hidden>
+                     >
                     {% for record in outcomes %}
                     <article class="col-md-4 col-xs-12">
                         <div class="row start-md center-xs synergy_item middle-xs">
@@ -132,6 +132,8 @@ function onStart(){
                     </article>
                     {% endfor %}
                 </div>
+
+
             </div>
         </div>
     </section>
@@ -144,22 +146,22 @@ function onStart(){
             {% component 'partner_projects' %}
 
             <div class="accordion-border key_0">
-                <div
-                    class="row middle-xs accordion-toggle"
-                    aria-expanded="false"
-                    aria-controls="partnering-projects-content"
-                    id="partnering-projects-button">
-                    <div class="col-xs start-xs">Synergies pursued</div>
-                    <div class="col-xs end-xs plusminus" aria-hidden="true">
-                        <span class="plus"></span>
-                    </div>
-                </div>
+<!--                <div-->
+<!--                    class="row middle-xs accordion-toggle"-->
+<!--                    aria-expanded="true"-->
+<!--                    aria-controls="partnering-projects-content"-->
+<!--                    id="partnering-projects-button">-->
+<!--                    <div class="col-xs start-xs">Synergies pursued</div>-->
+<!--                    <div class="col-xs end-xs plusminus" aria-hidden="true">-->
+<!--                        <span class="plus"></span>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <div class="row accordion-content"
                      id="partnering-projects-content"
                      role="region"
                      aria-labelledby="partnering-projects-button"
-                     hidden>
+                     >
                     {% for record in research %}
                     <article class="col-md-4 col-xs-12">
                         <div class="row start-md center-xs synergy_item">

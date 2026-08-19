@@ -23,37 +23,20 @@ description_limit = 0
 <footer>
     <div class="container-fluid border-box dark-background">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-xs-12">
+            <div class="row footer-top middle-xs">
+                <div class="col-md-3 col-xs-12 footer-brand">
                     <img src="{{'FORSAID_Logo.svg'|media}}" alt="FORSAID project logo" class="footer_logo">
                 </div>
 
-                <div class="col-md-6 col-xs-12">
-                    {% if (footer_funds_flag != null or footer_funds_text != '') %}
-                    <section aria-labelledby="funding-heading">
-                        <h2 id="funding-heading" class="sr-only">Funding Information</h2>
-                        <div class="funding flex-column my-1 my-lg-0 flex-lg-row px-1 col-sm col-xs-12">
-                            {% if footer_funds_flag %}
-                            <img class="mr-0 mr-lg-1" src="{{ footer_funds_flag }}" alt="European Union flag"/>
-                            {% endif %}
-                        </div>
-                    </section>
-                    {% endif %}
-                </div>
-
-                <nav class="col-md-6 col-xs-12" aria-labelledby="footer-links-heading">
+                <nav class="col-md-9 col-xs-12 footer-nav" aria-labelledby="footer-links-heading">
                     <h2 id="footer-links-heading" class="sr-only">Footer Links</h2>
                     {% component 'footer_menu' %}
                 </nav>
+            </div>
 
-                <div class="col-md-6 col-xs-12">
-                    <div class="funding-text">
-                        {% component 'footer_funds' %}
-                    </div>
-                </div>
-
-                <section class="col-md-6 col-xs-12 social-networks-footer-container" aria-labelledby="social-heading">
-                    <h2 id="social-heading">Follow us</h2>
+            <div class="row footer-main">
+                <section class="col-md-3 col-xs-12 footer-connect" aria-labelledby="social-heading">
+                    <h2 id="social-heading" class="sr-only">Follow us</h2>
                     <nav class="social-networks" aria-label="Social media links">
                         <ul class="icons">
                             {% if enable_facebook and facebook_url %}
@@ -75,6 +58,17 @@ description_limit = 0
                                    class="pr p-secondary p-twitter normal"
                                    aria-label="Follow us on Twitter (opens in new window)">
                                     <span class="sr-only">Twitter</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if this.theme.bluesky_url %}
+                            <li>
+                                <a href="{{this.theme.bluesky_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-bluesky normal"
+                                   aria-label="Follow us on Bluesky (opens in new window)">
+                                    <span class="sr-only">Bluesky</span>
                                 </a>
                             </li>
                             {% endif %}
@@ -111,17 +105,6 @@ description_limit = 0
                                 </a>
                             </li>
                             {% endif %}
-                            {% if this.theme.bluesky_url %}
-                            <li>
-                                <a href="{{this.theme.bluesky_url}}"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="pr p-secondary p-bluesky normal"
-                                   aria-label="Follow us on Bluesky (opens in new window)">
-                                    <span class="sr-only">Bluesky</span>
-                                </a>
-                            </li>
-                            {% endif %}
                             {% if this.theme.threads_url %}
                             <li>
                                 <a href="{{this.theme.threads_url}}"
@@ -133,37 +116,56 @@ description_limit = 0
                                 </a>
                             </li>
                             {% endif %}
-                            {% if this.theme.subscribe %}
-                            <li>
-                                <a href="{{this.theme.subscribe}}"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   style="width: fit-content; margin-left: 15px; font-family: 'Nunito Sans';"
-                                   aria-label="Subscribe to newsletter (opens in new window)">
-                                    Subscribe <i class="pr p-subscribe" style="margin-left: 5px;" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            {% endif %}
                         </ul>
                     </nav>
+
+                    {% if this.theme.subscribe %}
+                    <a href="{{this.theme.subscribe}}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="footer-subscribe"
+                       aria-label="Subscribe to our newsletter (opens in new window)">
+                        Subscribe to our newsletter
+                        <span class="footer-subscribe-arrow" aria-hidden="true"></span>
+                    </a>
+                    {% endif %}
                 </section>
 
-                <div class="col-md-6 col-xs-12">
-                    <div class="row">
-                        <nav class="col-md-4 col-xs-12 start-md center-xs privacy_policy_container" aria-label="Legal links">
-                            <a href="{{'privacy-policy'|page}}">Privacy policy</a>
-                        </nav>
-                        <div class="col-md-8 col-xs-12 powered-by end-md center-xs">
-                            <p>Designed and powered by
-                                <a href="https://pensoft.net/"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   aria-label="Pensoft (opens in new window)">
-                                    <img class="pensoft_logo" src="{{ 'assets/images/pensoft-logo.svg'|theme }}" alt="Pensoft" />
-                                </a>
-                            </p>
+                <div class="col-md-9 col-xs-12 footer-funding">
+                    {% if (footer_funds_flag != null or footer_funds_text != '') %}
+                    <section aria-labelledby="funding-heading">
+                        <h2 id="funding-heading" class="sr-only">Funding Information</h2>
+                        {% if footer_funds_flag %}
+                        <div class="funding">
+                            <img src="{{ footer_funds_flag }}" alt="Funded by the European Union"/>
                         </div>
+                        {% endif %}
+                    </section>
+                    {% endif %}
+
+                    <div class="funding-text">
+                        {% component 'footer_funds' %}
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid border-box footer-bottom">
+        <div class="container">
+            <div class="row middle-xs">
+                <nav class="col-md-6 col-xs-12 start-md center-xs privacy_policy_container" aria-label="Legal links">
+                    <a href="{{'privacy-policy'|page}}">Privacy Policy</a>
+                </nav>
+                <div class="col-md-6 col-xs-12 powered-by end-md center-xs">
+                    <p>Designed and powered by
+                        <a href="https://pensoft.net/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Pensoft (opens in new window)">
+                            <img class="pensoft_logo" src="{{ 'assets/images/pensoft-logo.svg'|theme }}" alt="Pensoft" />
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
