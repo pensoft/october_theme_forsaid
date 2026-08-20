@@ -39,6 +39,39 @@ description_limit = 0
                     <h2 id="social-heading" class="sr-only">Follow us</h2>
                     <nav class="social-networks" aria-label="Social media links">
                         <ul class="icons">
+                            {% if enable_linkedin and linkedin_url %}
+                            <li>
+                                <a href="{{linkedin_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-linkedin normal"
+                                   aria-label="Follow us on LinkedIn (opens in new window)">
+                                    <span class="sr-only">LinkedIn</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if this.theme.bluesky_url %}
+                            <li>
+                                <a href="{{this.theme.bluesky_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-bluesky normal"
+                                   aria-label="Follow us on Bluesky (opens in new window)">
+                                    <span class="sr-only">Bluesky</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if enable_youtube and youtube_url %}
+                            <li>
+                                <a href="{{youtube_url}}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="pr p-secondary p-youtube normal"
+                                   aria-label="Follow us on YouTube (opens in new window)">
+                                    <span class="sr-only">YouTube</span>
+                                </a>
+                            </li>
+                            {% endif %}
                             {% if enable_facebook and facebook_url %}
                             <li>
                                 <a href="{{facebook_url}}"
@@ -61,39 +94,9 @@ description_limit = 0
                                 </a>
                             </li>
                             {% endif %}
-                            {% if this.theme.bluesky_url %}
-                            <li>
-                                <a href="{{this.theme.bluesky_url}}"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="pr p-secondary p-bluesky normal"
-                                   aria-label="Follow us on Bluesky (opens in new window)">
-                                    <span class="sr-only">Bluesky</span>
-                                </a>
-                            </li>
-                            {% endif %}
-                            {% if enable_linkedin and linkedin_url %}
-                            <li>
-                                <a href="{{linkedin_url}}"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="pr p-secondary p-linkedin normal"
-                                   aria-label="Follow us on LinkedIn (opens in new window)">
-                                    <span class="sr-only">LinkedIn</span>
-                                </a>
-                            </li>
-                            {% endif %}
-                            {% if enable_youtube and youtube_url %}
-                            <li>
-                                <a href="{{youtube_url}}"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="pr p-secondary p-youtube normal"
-                                   aria-label="Follow us on YouTube (opens in new window)">
-                                    <span class="sr-only">YouTube</span>
-                                </a>
-                            </li>
-                            {% endif %}
+
+
+
                             {% if enable_instagram and instagram_url %}
                             <li>
                                 <a href="{{instagram_url}}"
